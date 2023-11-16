@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbslqvup525e0"]
+
+[ext_resource type="PackedScene" uid="uid://dce3f50ktfqr1" path="res://SCENES/scene_1.tscn" id="1_fjanu"]
+[ext_resource type="Script" path="res://SCENES/main_scene.gd" id="1_ksjdj"]
+[ext_resource type="PackedScene" uid="uid://csor4yosk5ox1" path="res://SCENES/scene_2.tscn" id="2_5k3mt"]
+[ext_resource type="PackedScene" uid="uid://cp0hh1h25m3kc" path="res://SCENES/main_menu.tscn" id="4_qk0c3"]
+[ext_resource type="PackedScene" uid="uid://dte7x7k0nqqec" path="res://SCENES/options.tscn" id="5_eeqvs"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_ksjdj")
+
+[node name="Scene1" parent="." instance=ExtResource("1_fjanu")]
+
+[node name="Scene2" parent="." instance=ExtResource("2_5k3mt")]
+
+[node name="MainMenu" parent="." instance=ExtResource("4_qk0c3")]
+
+[node name="Options" parent="." instance=ExtResource("5_eeqvs")]
