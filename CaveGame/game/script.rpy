@@ -5,7 +5,10 @@
 
 define c = Character("Camera")
 define p = Character("Croissant")
+define r = Character("Rey")
 image p1s1 = "p1s1.png"
+image rey1 = "rey1.png"
+#THIS IS THE SHAKE FUNCTION
 init:
 
     python:
@@ -63,9 +66,11 @@ init:
         Shake = renpy.curry(_Shake)
     #
 
-#
+#If you want to use the shake function during dialogue: example = c "ahhhhhh!" with sshake
 init:
     $ sshake = Shake((0, 0, 0, 0), 1.0, dist=15)
+
+
 # The game starts here.
 
 label start:
@@ -92,4 +97,17 @@ label start:
 
     # This ends the game.
 
-    return
+    jump introscreen
+
+#Intro Screen
+label introscreen:
+    scene bg cave
+
+    show p1s1 at left
+
+    p "oh my gooooooodness!"
+
+    show rey1 at right
+
+    r "woah we are in a cave!"
+
