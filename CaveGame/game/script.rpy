@@ -20,7 +20,7 @@ image bottle2 = "bottle2.png"
 image reycry = "reycry.png"
 image reyyell = "reyyell.png"
 image reyyell2 = "reyyell2.png"
-
+image titlepageone = "titlepageone.png"
 #this is a fade for the timer bar!
 transform alpha_dissolve:
     alpha 0.0
@@ -34,6 +34,11 @@ screen bottleButton():
         yalign 0.5
         auto "bottle_%s.png" action [ToggleScreen("bottleButton"), Jump("scene2")]
 
+screen startButton():
+    imagebutton:
+        xalign 0.5
+        yalign 0.8
+        auto "start_%s.png" action [ToggleScreen("startButton"), Jump('scene1')]
 #THIS IS THE SHAKE FUNCTION
 init:
 
@@ -130,8 +135,12 @@ label start:
 
     jump introscreen
 
-#Intro Screen
 label introscreen:
+    scene bg titlepageone
+    call screen startButton
+
+#Intro Screen
+label scene1:
     scene bg cave
 
     show p1s1 at left
@@ -150,15 +159,15 @@ label introscreen:
     show chance at left
     
     chance "Psh, yeah whatever dude"
+    hide rey2
+    show rey1 at right
 
     show robby
 
     robby "Heh yeah whatever this cave is like super boring guys right lol yeah..."
    
-    hide rey2
     show robby at topleft
     show robby behind chance
-    show rey1 at right
 
     call screen bottleButton
 
@@ -207,7 +216,7 @@ label Smashed:
     scene bg cave
 
     show reycry
-    rey "OW!"
+    rey "OW!" with sshake
 
     hide reycry
     show chance at right
@@ -221,6 +230,7 @@ label Smashed:
     rey "The glass sliced my arm dude!"
 
     chance "oh sorry, it must've bounced off the cave wall or something..."
+    
     return
 
 label left:
@@ -228,4 +238,6 @@ label left:
     
     show rey1
     rey "Good, let's treat the cave nicely."
+    
+    return
 
