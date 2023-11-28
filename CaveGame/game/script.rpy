@@ -5,9 +5,35 @@
 
 define c = Character("Camera")
 define p = Character("Croissant")
-define r = Character("Rey")
+define rey = Character("Rey")
+define chance = Character("Chance")
+define robby = Character("Robby")
+
 image p1s1 = "p1s1.png"
 image rey1 = "rey1.png"
+image rey2 = "rey2.png"
+image reyblegh = "reyblegh.png"
+image chance = "chance.png"
+image robby = "robby.png"
+image bottle = "bottle.png"
+image bottle2 = "bottle2.png"
+image reycry = "reycry.png"
+image reyyell = "reyyell.png"
+image reyyell2 = "reyyell2.png"
+
+#this is a fade for the timer bar!
+transform alpha_dissolve:
+    alpha 0.0
+    linear 0.5 alpha 1.0
+    on hide:
+        linear 0.5 alpha 0
+
+screen bottleButton():
+    imagebutton:
+        xalign 0.5
+        yalign 0.5
+        auto "bottle_%s.png" action [ToggleScreen("bottleButton"), Jump("scene2")]
+
 #THIS IS THE SHAKE FUNCTION
 init:
 
@@ -69,10 +95,15 @@ init:
 #If you want to use the shake function during dialogue: example = c "ahhhhhh!" with sshake
 init:
     $ sshake = Shake((0, 0, 0, 0), 1.0, dist=15)
-
-
+#THIS IS THE FUNCTION FOR THE TIMER!!!
+init:
+    $timer_range = 0
+    $timer_jump = 0
+    $time = 0
+screen countdown:
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
+    bar value time range timer_range xalign 0.5 yalign 0.6 xmaximum 300 at alpha_dissolve
 # The game starts here.
-
 label start:
 
     # Show a background. This uses a placeholder by default, but you can
@@ -109,5 +140,92 @@ label introscreen:
 
     show rey1 at right
 
-    r "woah we are in a cave!"
+    rey "woah we are in a cave!"
+
+    show rey2 at right
+
+    rey "it's pretty nice in here :)"
+   
+    hide p1s1
+    show chance at left
+    
+    chance "Psh, yeah whatever dude"
+
+    show robby
+
+    robby "Heh yeah whatever this cave is like super boring guys right lol yeah..."
+   
+    hide rey2
+    show robby at topleft
+    show robby behind chance
+    show rey1 at right
+
+    call screen bottleButton
+
+label scene2:
+    $time = 5
+    $timer_range = 5
+    $timer_jump = 'decide'
+    scene bg cave
+
+    show robby at right
+
+    robby "woah what did that bottle do?"
+
+    show chance at left
+
+    chance "don't know, but"
+    chance "let's smash it!!!"
+#THIS MENU FEATURE IS HOW U MAKE CHOICES
+    show screen countdown
+    menu:
+        "SMASH IT!":
+            hide screen countdown
+            jump Smashed
+        "Leave it.":
+            hide screen countdown
+            jump left
+label decide:
+    $time = 5
+    $timer_range = 5
+    $timer_jump = 'decide'
+    scene bg cave
+    show robby at right
+    show chance at left
+
+    chance "Well, what should we do?"
+
+    show screen countdown
+    menu:
+        "SMASH IT!":
+            hide countdown
+            jump Smashed
+        "Leave it.":
+            hide countdown
+            jump left
+label Smashed:
+    scene bg cave
+
+    show reycry
+    rey "OW!"
+
+    hide reycry
+    show chance at right
+    show reyyell2 at left 
+
+    chance "What even happened"
+
+    hide reyyell2 
+    show reyyell at left
+
+    rey "The glass sliced my arm dude!"
+
+    chance "oh sorry, it must've bounced off the cave wall or something..."
+    return
+
+label left:
+    scene bg cave
+    
+    show rey1
+    rey "Good, let's treat the cave nicely."
 
