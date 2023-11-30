@@ -209,13 +209,39 @@ label StartB:
     
     mc "You squint, convinced your eyes were playing tricks on you. This place had to be playing tricks on you, right? Rocks didn’t move like that."
 
-    # pick up trash im assuming
-    menu:
-        "Pick up Trash":
+    mc "You have no interest in staying in this room any longer–it creeps you the fuck out. It was probably time to meet up with the others, anyway. You should get back to the rendezvous point."
+
+    menu: 
+        "Look around the room":
             jump Trash
+        "Shimmy backwards in the passage and head back to the rendezvous point":
+            jump Rendezvouspoint
 
 label Trash:
-    mc "You have no interest in staying in this room any longer–it creeps you the fuck out. It was probably time to meet up with the others, anyway. You should get back to the rendezvous point."
+    call screen bottle 
+    mc "You notice a piece of trash on the floor; a crumpled soda can."
+    menu:
+        "Pick it up":
+            jump pickedtrash
+        
+        "Leave it":
+            jump leavetrash
+
+label pickedtrash:
+    mc "You pick up the can; even in a place as unpleasant as this, there shouldn’t be trash laying around. Pollution sucked no matter where it was."
+    menu: 
+        "Leave it":
+            mc "what the fuck"
+            jump leavetrash
+
+label leavetrash:
+            mc "You shake your head. You don’t want to carry around a piece of gross trash; this place was already unpleasant enough."
+            mc "You shimmy back in the tunnel and start to head back to the rendezvous point."
+            jump Rendezvouspoint
+
+label Rendezvouspoint:
+
+    mc "dick and balls"
 
 label croissantstart:
 
