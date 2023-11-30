@@ -2,13 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 209: end of line expected.
-    jump StandUp:
-                ^
+File "game/script.rpy", line 270: expected statement.
+    Hide("countdown")
+                     ^
 
-File "game/script.rpy", line 252: expected simple expression
-    stop sound fadeout
-                      ^
+File "game/script.rpy", line 273: expected statement.
+    Hide("countdown")
+                     ^
+
+File "game/script.rpy", line 354: expected statement.
+    Hide("countdown")
+                     ^
+
+File "game/script.rpy", line 356: expected statement.
+    Hide("countdown")
+                     ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Wed Nov 29 23:07:38 2023
+Thu Nov 30 14:22:43 2023
