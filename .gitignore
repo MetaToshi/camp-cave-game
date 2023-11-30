@@ -1,2 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+*.rpyc
+CaveGame/game/script.rpy
+CaveGame/game/script.rpy
+CaveGame/game/screens.rpyc
+CaveGame/game/script.rpy

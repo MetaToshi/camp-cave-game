@@ -8,6 +8,7 @@ define p = Character("Croissant")
 define rey = Character("Rey")
 define chance = Character("Chance")
 define robby = Character("Robby")
+define mc = Character("")
 
 image p1s1 = "p1s1.png"
 image rey1 = "rey1.png"
@@ -113,6 +114,7 @@ screen countdown:
     timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
     bar value time range timer_range xalign 0.5 yalign 0.6 xmaximum 300 at alpha_dissolve
 
+<<<<<<< Updated upstream
 #THIS IS THE INVENTORY
 #IN ORDER TO ADD ITEMS PLEASE USE inventoryitems.append("itemname_%s.png")
 #Please keep in mind these are imagebuttons and do need separate images for action, hover, and idle.
@@ -173,6 +175,58 @@ screen itemdescriptions:
 
 ###----------------THE GAME STARTS HERE----------------###
 label start:
+=======
+# The game starts here !!!!! 
+label start:
+
+
+    mc "You finally feel the passage begin to widen in front of you, and you draw a breath, inching your way  forward. Just keep moving forward. Slowly, the walls loosen their grip on you and begin to give way."
+     
+    mc "You find yourself in a small cavern; it isn’t the most spacious thing in the world, but compared to what you had just been through, it feels like a penthouse suite. "
+
+    # show bg picture 
+    scene bg cave
+    mc "The passage spits you out low to the floor, and you push yourself up on your knees. "
+
+    mc "Your brain pulses against the sides of your skull, feeling the rhythm align with the sound of your heartbeat in your ears. "
+
+    mc "Blood pulsing through your body becomes apparent to you as you feel its pressure in your fingers and toes. The rhythmic beating of your blood, no, your heart, feel external. It’s all around you, emanating from the walls."
+
+    mc "You see it out of the corner of your eye, the rocks organically begin to pulse alongside the rhythm of your exhausted body. You turn to take a closer look, but are reassured that is not the case, as you glance at the static wall."
+
+    menu: 
+        "God, you needed to calm down":
+            jump StartA
+        "Jesus Christ, the walls really did look like they were palpitating. What the fuck?":
+            jump StartB
+
+label StartA:
+    
+    mc "You take a deep breath and put a hand on a nearby rock to steady yourself. But immediately spring back from the contact–you expected a rough surface underneath your palm, but instead were greeted with thin protruding lines."
+
+    mc " They’re almost like spiderwebs sticking out from the rocks, but within that brief moment of contact you could’ve sworn you felt…a pulse? They almost look like… "
+
+
+
+label StartB:
+    
+    mc "You squint, convinced your eyes were playing tricks on you. This place had to be playing tricks on you, right? Rocks didn’t move like that."
+
+    # pick up trash im assuming
+    menu:
+        "Pick up Trash":
+            jump Trash
+
+label Trash:
+    mc "You have no interest in staying in this room any longer–it creeps you the fuck out. It was probably time to meet up with the others, anyway. You should get back to the rendezvous point."
+
+label croissantstart:
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+>>>>>>> Stashed changes
     scene bg m1s1
 
     c "Ahhhhhhhhh!" with sshake
