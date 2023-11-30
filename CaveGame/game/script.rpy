@@ -114,7 +114,7 @@ screen countdown:
     timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
     bar value time range timer_range xalign 0.5 yalign 0.6 xmaximum 300 at alpha_dissolve
 
-<<<<<<< Updated upstream
+
 #THIS IS THE INVENTORY
 #IN ORDER TO ADD ITEMS PLEASE USE inventoryitems.append("itemname_%s.png")
 #Please keep in mind these are imagebuttons and do need separate images for action, hover, and idle.
@@ -175,9 +175,6 @@ screen itemdescriptions:
 
 ###----------------THE GAME STARTS HERE----------------###
 label start:
-=======
-# The game starts here !!!!! 
-label start:
 
 
     mc "You finally feel the passage begin to widen in front of you, and you draw a breath, inching your way  forward. Just keep moving forward. Slowly, the walls loosen their grip on you and begin to give way."
@@ -226,7 +223,7 @@ label croissantstart:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
->>>>>>> Stashed changes
+
     scene bg m1s1
 
     c "Ahhhhhhhhh!" with sshake

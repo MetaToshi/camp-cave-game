@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 153: expected a keyword argument or end of line.
-    at zoom 0.5
-            ^
+File "game/script.rpy", line 117: expected statement.
+    <<<<<<< Updated upstream
+                            ^
+
+File "game/script.rpy", line 178: expected statement.
+    =======
+          ^
+
+File "game/script.rpy", line 229: expected statement.
+    >>>>>>> Stashed changes
+                           ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Tue Nov 28 16:01:32 2023
+Thu Nov 30 12:33:56 2023
