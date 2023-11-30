@@ -1,27 +1,4 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define c = Character("Camera")
-define p = Character("Croissant")
-define rey = Character("Rey")
-define chance = Character("Chance")
-define robby = Character("Robby")
-define mc = Character("")
-
-image p1s1 = "p1s1.png"
-image rey1 = "rey1.png"
-image rey2 = "rey2.png"
-image reyblegh = "reyblegh.png"
-image chance = "chance.png"
-image robby = "robby.png"
-image bottle = "bottle.png"
-image bottle2 = "bottle2.png"
-image reycry = "reycry.png"
-image reyyell = "reyyell.png"
-image reyyell2 = "reyyell2.png"
-image titlepageone = "titlepageone.png"
+﻿#GAMING!!!!
 #this is a fade for the timer bar!
 transform alpha_dissolve:
     alpha 0.0
@@ -30,20 +7,14 @@ transform alpha_dissolve:
         linear 0.5 alpha 0
 
 #THIS IS WHERE I HAVE ADDED THE CLICKABLE OBJECTS!!!!
-screen bottleButton():
-    imagebutton:
-        xalign 0.5
-        yalign 0.5
-        auto "bottle_%s.png" action [ToggleScreen("bottleButton"), Jump("scene2")]
-
 screen startButton():
     imagebutton:
         xalign 0.5
         yalign 0.8
-        auto "start_%s.png" action [ToggleScreen("startButton"), Jump('scene1')]
-
+        auto "start_%s.png" action [ToggleScreen("startButton"), Jump('Heart')]
 
 #THIS IS THE SHAKE FUNCTION 
+
 init:
 
     python:
@@ -101,6 +72,7 @@ init:
         Shake = renpy.curry(_Shake)
         
     #
+
 #If you want to use the shake function during dialogue: example = c "ahhhhhh!" with sshake
 init:
     $ sshake = Shake((0, 0, 0, 0), 1.0, dist=15)
@@ -113,7 +85,6 @@ init:
 screen countdown:
     timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
     bar value time range timer_range xalign 0.5 yalign 0.6 xmaximum 300 at alpha_dissolve
-
 
 #THIS IS THE INVENTORY
 #IN ORDER TO ADD ITEMS PLEASE USE inventoryitems.append("itemname_%s.png")
@@ -172,203 +143,180 @@ screen itemdescriptions:
                     #ysize 300
 
                     
+define u = Character("...", what_italic=True)
+define mc = Character("Player")
+define rey = Character("Rey")
+define notrey = Character("Rey")
+
+image Rey_N_Default = "Rey_N_Default.png"
+image Rey_N_Guilt = "Rey_N_Guilt.png"
+image Rey_N_Nervous = "Rey_N_Nervous.png"
+image Rey_N_Question = "Rey_N_Question.png"
+image Rey_N_Smile = "Rey_N_Smile.png"
+image Rey_N_Speechless = "Rey_N_Speechless.png"
+image Rey_M_Default = "Rey_M_Default.png"
+image Rey_M_Guilt = "Rey_M_Guilt.png"
+image Rey_M_Nervous = "Rey_M_Nervous.png"
+image Rey_M_Question = "Rey_M_Question.png"
+image Rey_M_Smile = "Rey_M_Smile.png"
+image Rey_M_Speechless = "Rey_M_Speechless.png"
+image Robbie_N_Awkward = "Robbie_N_Awkward.png"
+image Robbie_N_Cheeky = "Robbie_N_Cheeky.png"
+image Robbie_N_Default = "Robbie_N_Default.png"
+image Robbie_N_Guilt = "Robbie_N_Guilt.png"
+image Robbie_N_Question = "Robbie_N_Question.png"
+image Robbie_N_Speechless = "Robbie_N_Speechless.png"
+image titlepageone = "titlepageone.png"
 
 ###----------------THE GAME STARTS HERE----------------###
 label start:
-
-
-    mc "You finally feel the passage begin to widen in front of you, and you draw a breath, inching your way  forward. Just keep moving forward. Slowly, the walls loosen their grip on you and begin to give way."
-     
-    mc "You find yourself in a small cavern; it isn’t the most spacious thing in the world, but compared to what you had just been through, it feels like a penthouse suite. "
-
-    # show bg picture 
-    scene bg cave
-    mc "The passage spits you out low to the floor, and you push yourself up on your knees. "
-
-    mc "Your brain pulses against the sides of your skull, feeling the rhythm align with the sound of your heartbeat in your ears. "
-
-    mc "Blood pulsing through your body becomes apparent to you as you feel its pressure in your fingers and toes. The rhythmic beating of your blood, no, your heart, feel external. It’s all around you, emanating from the walls."
-
-    mc "You see it out of the corner of your eye, the rocks organically begin to pulse alongside the rhythm of your exhausted body. You turn to take a closer look, but are reassured that is not the case, as you glance at the static wall."
-
-    menu: 
-        "God, you needed to calm down":
-            jump StartA
-        "Jesus Christ, the walls really did look like they were palpitating. What the fuck?":
-            jump StartB
-
-label StartA:
-    
-    mc "You take a deep breath and put a hand on a nearby rock to steady yourself. But immediately spring back from the contact–you expected a rough surface underneath your palm, but instead were greeted with thin protruding lines."
-
-    mc " They’re almost like spiderwebs sticking out from the rocks, but within that brief moment of contact you could’ve sworn you felt…a pulse? They almost look like… "
-
-
-
-label StartB:
-    
-    mc "You squint, convinced your eyes were playing tricks on you. This place had to be playing tricks on you, right? Rocks didn’t move like that."
-
-    mc "You have no interest in staying in this room any longer–it creeps you the fuck out. It was probably time to meet up with the others, anyway. You should get back to the rendezvous point."
-
-    menu: 
-        "Look around the room":
-            jump Trash
-        "Shimmy backwards in the passage and head back to the rendezvous point":
-            jump Rendezvouspoint
-
-label Trash:
-    call screen bottle 
-    mc "You notice a piece of trash on the floor; a crumpled soda can."
-    menu:
-        "Pick it up":
-            jump pickedtrash
-        
-        "Leave it":
-            jump leavetrash
-
-label pickedtrash:
-    mc "You pick up the can; even in a place as unpleasant as this, there shouldn’t be trash laying around. Pollution sucked no matter where it was."
-    menu: 
-        "Leave it":
-            mc "what the fuck"
-            jump leavetrash
-
-label leavetrash:
-            mc "You shake your head. You don’t want to carry around a piece of gross trash; this place was already unpleasant enough."
-            mc "You shimmy back in the tunnel and start to head back to the rendezvous point."
-            jump Rendezvouspoint
-
-label Rendezvouspoint:
-
-    mc "dick and balls"
-
-label croissantstart:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
-
-    scene bg m1s1
-
-    c "Ahhhhhhhhh!" with sshake
-
-    show p1s1
-
-    p "aaaaaaaaaa"
-
-    p "Stop! I coulda dropped my croissant..."
-
-    # This ends the game.
-
-    jump introscreen
-
-label introscreen:
     scene bg titlepageone
     call screen startButton
 
 #Intro Screen
-label scene1:
+label Heart:
     scene bg cave
 
-    show p1s1 at left
+    u "You finally feel the passage begin to widen in front of you, and you draw a breath, inching your way forward."
+    u "Just keep moving forward."
+    u "Slowly, the walls loosen their grip on you and begin to give way."
+    u "You find yourself in  a small cavern; it isn't the most spacious thing in the world, but compared to what you had just been through, it feels like a penthouse suite"
 
-    p "oh my gooooooodness!"
+    u "The passage spits you out low to the floor, and you push yourself up on your knees."
+    play sound "Footsteps-Normal.ogg" loop
+    u "Your brain pulses against the sides of your skull, feeling the rhythm align with the sound of your heartbeat in your ears."
+    u "Blood pulsing through your body becomes apparent to you as you feel its pressure in your fingers and toes. The rhythmic beating of your blood, no, your heart, feel external. It’s all around you, emanating from the walls. "
+    u "You see it out of the corner of your eye, the rocks organically begin to pulse alongside the rhythm of your exhausted body. "
+    u "You turn to take a closer look, but are reassured that is not the case, as you glance at the static wall. "
+    stop sound fadeout 0.5
 
-    show rey1 at right
+    menu:
+        "God, you need to calm down.":
+            pass
+        "Jesus Christ, the walls really did look like they were palpitating. What the fuck?":
+            pass
 
-    rey "woah we are in a cave!"
+label HeartA:
+    scene bg cave
+    u "You take a deep breath and put a hand on a nearby rock to steady yourself. But immediately spring back from the contact–you expected a rough surface underneath your palm, but instead were greeted with thin protruding lines."
+    u "They’re almost like spiderwebs sticking out from the rocks, but within that brief moment of contact you could’ve sworn you felt…a pulse? They almost look like…"
+    menu:
+        "...veins?":
+            jump HeartA1
+        "...just a weird rock formation.":
+            jump HeartA2
+label HeartA1:
+    scene bg cave
+    u "You glance down at your own inner arm, the weak light of your flashlight illuminating your skin. The pattern on the rocks match the spindly contours of your veins. You shiver."
+    jump StandUp
+label StandUp:
+    u "Nothing to see here"
+    jump Trash
+label HeartA2:
+    scene bg cave
+    u "You shake your head, dismissing whatever bizarre connection your brain was about to make."
+    jump Trash
+label HeartB:
+    scene bg cave
+    u "You squint, convinced your eyes were playing tricks on you. This place had to be playing tricks on you, right? Rocks didn’t move like that."
+    jump Trash
 
-    show rey2 at right
 
-    rey "it's pretty nice in here :)"
-   
-    hide p1s1
-    show chance at left
-    
-    chance "Psh, yeah whatever dude"
-    hide rey2
-    show rey1 at right
+label Trash:
+    scene bg cave
+    u "You have no interest in staying in this room any longer–it creeps you the fuck out. It was probably time to meet up with the others, anyway. You should get back to the rendezvous point."
+    menu:
+        "Look around the room":
+            jump TrashA
+        "Shimmy backward in the passage and head back to the rendezvous point.":
+            jump RendezvousPoint
+label TrashA:
+    scene bg cave
+    u "You notice a piece of trash on the floor; a crumpled soda can."
+    menu:
+        "Pick it up.":
+            jump TrashA1
+        "Leave it.":
+            jump TrashA2
+label TrashA1:
+    scene bg cave
+    u "You pick up the can; even in a place as unpleasant as this, there shouldn’t be trash laying around. Pollution sucked no matter where it was."
+    jump RendezvousPoint
+label TrashA2:
+    scene bg cave
+    u "You shake your head. You don’t want to carry around a piece of gross trash; this place was already unpleasant enough. You shimmy back in the tunnel and start to head back to the rendezvous point."
+    jump RendezvousPoint
 
-    show robby
 
-    robby "Heh yeah whatever this cave is like super boring guys right lol yeah..."
-   
-    show robby at topleft
-    show robby behind chance
-
-    call screen bottleButton
-
-label scene2:
+label RendezvousPoint:
     $time = 5
     $timer_range = 5
-    $timer_jump = 'decide'
+    $timer_jump = 'RendezvousPoint'
     scene bg cave
-
-    show robby at right
-    show screen inventory
-    $inventoryitems.append("bottle_%s.png") 
-    $inventoryitems.append("start_%s.png")
-    robby "woah what did that bottle do?"
-
-    show chance at left
-
-    chance "don't know, but"
-    chance "let's smash it!!!"
-#THIS MENU FEATURE IS HOW U MAKE CHOICES
+    play sound "Footsteps-Reverbed.ogg"
+    u "You finally make it back to the rendezvous point. An empty, silent cavern greets you."
+    stop sound fadeout 0.5
+    u "Where were the others? You cast your flashlight beam around the space, but see nothing except stone walls and stalagmites."
+    u "Shifting uneasily, you bite your lip. This whole thing just isn’t sitting right with you. This cave felt off, in more ways than one. Maybe it was time to get the hell out of this place."
     show screen countdown
     menu:
-        "SMASH IT!":
-            hide screen countdown
-            jump Smashed
-        "Leave it.":
-            hide screen countdown
-            jump left
-label decide:
-    $time = 5
-    $timer_range = 5
-    $timer_jump = 'decide'
+        "Leave the cave":
+            jump RendezvousPointA
+        "Go looking for your friends.":
+            jump RendezvousPointB
+label RendezvousPointA:
     scene bg cave
-    show robby at right
-    show chance at left
-
-    chance "Well, what should we do?"
-
-    show screen countdown
+    play sound ["Footsteps-Reverbed.ogg", "Foosteps-Normal.ogg"]
+    u "You can’t take this place anymore. You turn to make your way back through the passages and rooms, ignoring the jab of guilt at leaving your friends behind in the cave."
+    u " They should be fine–they were probably all together somewhere down there. Sooner or later they would reach the same conclusion you did and leave."
+    u "..."
+    u "You climb until you see the faint rays of daylight from the mouth of the cave."
+label RendezvousPointB:
+    scene bg cave
+    u "You can’t leave your friends behind. But sitting alone in the cavern is sending shivers down your spine."
+    u "Your gaze locks on the far end of the cavern, where two gaping openings mark distinct paths."
+    u "The one on the right has a narrow entrance; you’d have to turn sideways to slide through. The one on the left has a wider opening."
     menu:
-        "SMASH IT!":
-            hide countdown
-            jump Smashed
-        "Leave it.":
-            hide countdown
-            jump left
-label Smashed:
+        "You choose the path on the right.":
+            jump RendezvousPointB1
+        "You choose the path on the left.":
+            jump RendezvousPointB2
+#THESE TWO NEED ROCK SOUNDS_______________________________________________________
+label RendezvousPointB1:
     scene bg cave
-
-    show reycry
-    rey "OW!" with sshake
-
-    hide reycry
-    show chance at right
-    show reyyell2 at left 
-
-    chance "What even happened"
-
-    hide reyyell2 
-    show reyyell at left
-
-    rey "The glass sliced my arm dude!"
-
-    chance "oh sorry, it must've bounced off the cave wall or something..."
-    
-    return
-
-label left:
+    u "You take the path on the right. You flip sideways and move into the passage with your arms flat at your sides. You feel the abrasive rock rub at your skin."
+    jump Womb
+label RendezvousPointB2:
     scene bg cave
-    
-    show rey1
-    rey "Good, let's treat the cave nicely."
-    
-    return
+    u "You veer toward the right opening. Though the entrance to the passage is wide, about fifteen paces in it slant sharply downward."
+    u "You crouch, and then eventually go to your hands and knees.You crouch, and then eventually go to your hands and knees."
+    u "The walls seem to constrict around you until you're flat on your stomach, army crawling forward. You regret choosing this path as you feel the back of your head knock against the low ceiling, the distance between it and the floor barely a foot in height."
+    u "But there wasn’t any space to turn around, so you continue ahead."
+    jump Stomach
+
+
+label Womb:
+    u "It may have been your imagination, but you swore you felt the skitter of spider legs crawl over one of your hands."
+    u "You yelp a bit, but your flashlight is in your other hand, and the space is far too narrow to turn your head to look down at where you felt the movement. You shudder."
+    u "The opening to leave the passage was smaller than the tunnel itself, and you have to bend awkwardly at the waist to get low enough to duck through."
+    u "Once on the other side, you look up and nearly jump straight out of your skin."
+    u "Rey is standing in the center of the room, watching you quietly."
+
+    show Rey_M_Default
+    mc "Rey? What-what  are you doing here?"
+    u "She stares right through you, only looking up and meeting your eyes when you walk closer."
+    mc "Rey? What are you-"
+    notrey "Oh, hello."
+    u "Her voice sounds somber, almost tired, like she had just finished crying."
+    mc "Uh, hi? C’mon Rey, stop acting weird, why are you down here?"
+    u "As you ask her again, she offers what seems like a forced smile and continues."
+    notrey "I was looking for you, and the rest of our group. Not sure how I got here…"
+    mc "Ah, yeah me too…"
+    mc "I wonder if Chance and Robbie are lost too, or if they’re looking for us."
+    u "Rey stares at you, blankly."
+
+label Stomach:
+    pass
+
+
 
