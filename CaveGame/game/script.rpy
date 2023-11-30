@@ -28,6 +28,7 @@ transform alpha_dissolve:
     on hide:
         linear 0.5 alpha 0
 
+#THIS IS WHERE I HAVE ADDED THE CLICKABLE OBJECTS!!!!
 screen bottleButton():
     imagebutton:
         xalign 0.5
@@ -39,7 +40,9 @@ screen startButton():
         xalign 0.5
         yalign 0.8
         auto "start_%s.png" action [ToggleScreen("startButton"), Jump('scene1')]
-#THIS IS THE SHAKE FUNCTION
+
+
+#THIS IS THE SHAKE FUNCTION 
 init:
 
     python:
@@ -95,11 +98,12 @@ init:
                         **properties)
 
         Shake = renpy.curry(_Shake)
+        
     #
-
 #If you want to use the shake function during dialogue: example = c "ahhhhhh!" with sshake
 init:
     $ sshake = Shake((0, 0, 0, 0), 1.0, dist=15)
+
 #THIS IS THE FUNCTION FOR THE TIMER!!!
 init:
     $timer_range = 0
@@ -108,24 +112,72 @@ init:
 screen countdown:
     timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
     bar value time range timer_range xalign 0.5 yalign 0.6 xmaximum 300 at alpha_dissolve
-# The game starts here.
+
+#THIS IS THE INVENTORY
+#IN ORDER TO ADD ITEMS PLEASE USE inventoryitems.append("itemname_%s.png")
+#Please keep in mind these are imagebuttons and do need separate images for action, hover, and idle.
+#These images can be duplicates tho
+default item_descriptions = {}
+default inventoryitems = []
+default item_description = ""
+
+screen inventory:
+    zorder 90
+    frame:
+        background "#7e2811"
+        xalign 0.935
+        yalign 0.9
+
+        textbutton "Inventory":
+            action ToggleScreen("itemdescriptions")
+style inventorybutton is frame:
+    xsize 200
+    ysize 200
+
+style inventorybuttontext:
+    xalign 0.5
+    yalign 0.5
+
+init:
+    transform customzoom:
+        zoom 0.5
+
+screen itemdescriptions:
+    window:
+        background "#ABB8"
+        xsize 420
+        ysize 750
+        xalign 1.0
+        yalign 0.5
+    window:
+        background "#ffffff"
+        xsize 400
+        ysize 720
+        xalign 1.0
+        yalign 0.5
+        hbox:
+            box_wrap True
+            box_wrap_spacing 10
+            spacing 10
+            xoffset 20
+            yoffset 20
+            style_prefix "inventory"
+            for i in inventoryitems:
+                imagebutton:
+                    auto i
+                    at customzoom
+                    #xsize 100
+                    #ysize 300
+
+                    
+
+###----------------THE GAME STARTS HERE----------------###
 label start:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
     scene bg m1s1
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
     c "Ahhhhhhhhh!" with sshake
 
-
     show p1s1
-
-    # These display lines of dialogue.
 
     p "aaaaaaaaaa"
 
@@ -178,7 +230,9 @@ label scene2:
     scene bg cave
 
     show robby at right
-
+    show screen inventory
+    $inventoryitems.append("bottle_%s.png") 
+    $inventoryitems.append("start_%s.png")
     robby "woah what did that bottle do?"
 
     show chance at left
