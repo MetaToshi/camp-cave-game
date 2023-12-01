@@ -178,6 +178,14 @@ label start:
     call screen startButton
 
 #Intro Screen
+label Welcome:
+    u "Welcome, Claire, to Hellmouth Caves."
+    u "This game is designed to emulate the HellHole caves on the UCSC campus–with a little bit of a twist. You’ll be playing as Claire, a college student that has dared to enter the cave with her group of friends."
+    u "If at any point you feel lost, confused, or unsure about how to proceed, the best advice is (just as in real cave exploration); take a moment and observe your surroundings, or in this case, what the story is trying to tell you."
+    u "Best of luck in your exploration."
+    u "You’ll need it."
+label ContentWarning:
+    u "Content Warning: This game features graphic depictions of body horror that may not be agreeable for some viewers. Proceed Appropriately."
 label Heart:
     scene bg blacksquare
 
