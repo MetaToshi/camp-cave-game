@@ -13,6 +13,7 @@ screen startButton():
         yalign 0.8
         auto "start_%s.png" action [ToggleScreen("startButton"), Jump('Heart')]
 
+default Mimic = 0
 #THIS IS THE SHAKE FUNCTION 
 
 init:
@@ -293,7 +294,7 @@ label RendezvousPointB:
 label RendezvousPointB1:
     scene bg cave
     u "You take the path on the right. You flip sideways and move into the passage with your arms flat at your sides. You feel the abrasive rock rub at your skin."
-    $Mimic = True
+    $Mimic = 1
     jump Womb
 label RendezvousPointB2:
     scene bg cave
@@ -357,14 +358,14 @@ label Womb:
             hide screen countdown
             jump WombB
 label WombA:
-    scene bg cave
+    scene bg fleshhole
     u "You follow after Rey, a strange feeling in your stomach. She must have been moving fast, because you don’t catch sight of her ahead of you."
     u "Fifteen paces in, the ceiling starts to slant sharply downward. You crouch, and then eventually go to your hands and knees."
     u "The walls seem to constrict around you until you're flat on your stomach, army crawling forward. You regret choosing this path as you feel the back of your head knock against the low ceiling, the distance between it and the floor barely a foot in height. But there wasn’t any space to turn around, so you continue ahead."
     mc "Rey? Are you there? Slow down, I don't want to lose you."
     jump Stomach
 label WombB:
-    scene bg cave
+    scene bg fleshhole
     u "You watch Rey crawl through the low passage, but your feet don’t move. For some reason, the whole interaction didn’t sit quite right with you."
     u "Trusting your gut, you hurry forward and slip into a tunnel off to the side, before you had a chance to second guess yourself."
     u "You hear voices up ahead, and tense for a moment."
@@ -374,12 +375,13 @@ label WombB:
 
 
 label Stomach:
-    scene bg cave
+    scene bg fleshhole
     u "You squirm through the final twist, your hips at an uncomfortable angle that makes a pain throb up your spine. The air begins to feel warm and damp, and a strange smell stings your nostrils; almost acidic, with the metallic undertones of rotting flesh."
     u "You swallow down  the urge to gag, and wiggle out onto the flat floor. You bend your knees to pull your legs free, swinging them around to–"
     u "You jolt, adrenaline flooding through every part of your body as your legs dangle into open air. A scream is pushed down as you realize the thing you thought was floor was actually a narrow ledge, barely foot wide before it drops off into gaping nothingness."
+    scene bg cave
     u "You’d reached a pit, yawning in front of you like a horrid black void."
-    if Mimic == True:
+    if Mimic == 1:
         u "Rey was nowhere to be seen."
     menu:
         "You need to get away from the edge.":
@@ -401,7 +403,7 @@ label StomachB:
     u "The movement causes a wayward rock to skitter off the ledge and into the pit, and you hold your breath to see if you can hear when it lands."
     u "..."
     u "Seconds pass. You don’t hear the rock land, but you do hear something else. It sounds like…voices?"
-    if Mimic == True: 
+    if Mimic == 1: 
         u "Had Rey fallen down there? Was she hurt?"
     menu:
         "You decide to go back.":
@@ -411,9 +413,9 @@ label StomachB:
 label StomachB2:
     scene bg cave
     u "You lean in closer. Yes, voices. They weren’t saying words, but muted groans and stuttering gasps."
-    if Mimic == True: 
+    if Mimic == 1: 
         u "It didn't sound like Rey, but..."
-    if Mimic == False:
+    if Mimic == 0:
         menu:
             "You decide to go back.":
                 pass
@@ -442,7 +444,7 @@ label StomachB22B:
     u "Your breathing escalates."
     u "A noie comes from your left and you jump. it's a voice, weak and gasping."
     stranger "H-help me…"
-    if Mimic == True:
+    if Mimic == 1:
         u "This definitely wasn't Rey. Where had she gone?"
     u "You tentatively reach out, and feel the rough fabric of a backpack and what seems like metal carabiners and a length of rope. A cave diver?"
     mc "Hello? Who are you? How long have you been down here?"
@@ -490,11 +492,11 @@ label SafeZone:
     show Rey_N_Default at right
     mc "Hey, hey I’m okay! Is everyone here?"
     robbie "It’s just me and Rey right now, Chance is still out exploring."
-    if Mimic == True:
+    if Mimic == 1:
         mc "Wait… Rey? I thought you were…"
         rey "Hm? Thought I was what?"
         mc "You were ahead of me- and you were acting all weird and stuff and-"
-        hide Rey_N_Default at right
+        hide Rey_N_Default
         show Rey_N_Nervous at right
         u "Rey looks confused, and shakes her head at you while looking concerned."
         rey "Claire I’ve been here for a while, Robbie can attest to that."
@@ -504,17 +506,17 @@ label SafeZone:
         u "Your friends stand around awkwardly, a bit of tension in the air as all of you try to understand what happened, before moving on."
     mc "How did you guys get here? This cave is so weird, I was worried I wouldn’t be able to find you all."
     hide Rey_N_Nervous 
-    show Rey_N_Smile
+    show Rey_N_Smile at right 
     rey "Mm, I definitely got lost for a while… and I was hearing all these weird noises, but eventually I ran into Robbie! Definitely a sight for sore eyes!"
     mc "How about you, Robbie? How was your solo adventure?"
     hide Robbie_N_Default
-    show Robbie_N_Awkward
+    show Robbie_N_Awkward at left 
     u "Robbie's face goes white."
     robbie "Oh uh- hah I-"
     mc "...are you okay?"
     robbie "So funny story… I uh, thought I had {i}already{/i} ran into you guys. I ran into Claire- or someone I thought was Claire, but you–I mean, {i}she{/i}, was acting REALLY weird. She never laughed? Or breathed, I think?"
     hide Rey_N_Smile
-    show Rey_N_Nervous
+    show Rey_N_Nervous at right 
     mc "Robbie…this is the first time I’ve seen you since we separated to explore."
     robbie "Then who the hell was {i}that{/i}?? She looked almost identical to you! I heard the rest of you guys nearby, talking and laughing and–and I thought I was safe, I thought we were all okay, but she just kept {i}looking{/i} at me and-"
     mc "You’re okay, alright? We’re all here and we’re all ourselves. Normal."
@@ -524,7 +526,7 @@ label SafeZone:
     robbie "What makes you think that? The flesh walls? The fake voices? The fake {i}people{/i} or–or {i}whatever{/i} they are?"
     mc "All of the above. This place is some horror movie shit."
     mc "We can question what the hell is happening later, but for now, let’s just find Chance and figure out how to get out of here."
-    $Mimic = False
+    $Mimic = 0
     u "[[To be continued...]]"
     return
 
