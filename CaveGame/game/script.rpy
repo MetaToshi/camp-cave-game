@@ -264,8 +264,10 @@ label Mouth:
     hide Robbie_N_Default
     show Robbie_N_Cheeky at l, bounce
     robbie "Welcome! To Hellmouth Caves."
+    show Rey_N_Default at r, bounce
     rey "..."
     claire "..."
+    show Chance_N_Default at m, bounce
     chance "..."
     hide Robbie_N_Cheeky
     show Robbie_N_Default at l, bounce
@@ -274,49 +276,65 @@ label Mouth:
     show Rey_N_Question at r, bounce
     rey "You’re so dramatic."
     hide Rey_N_Question
-    show Rey_N_Smile at r, bounce
+    show Rey_N_Smile at r
     claire "You thought cave spelunking would be a good bonding experience??"
+    show Robbie_N_Default at l, bounce
     robbie "C’mon Bro, back me up!"
+    show Chance_N_Default at m, bounce
     chance "Hey, I’m for it. I like a little challenge."
+    show Robbie_N_Default at l, bounce
     robbie "That’s the spirit! Come on Claire, get on board! And Rey, don’t look so nervous. Here, I brought a map and everything."
     show cavemap at t with dissolve
     robbie "It’s decently accurate."
     hide Rey_N_Smile
     show Rey_N_Nervous at r, bounce
     rey "Decently?"
+    show Robbie_N_Default at l, bounce
     robbie "Well come on, would that guy downtown really sell me a defective map? Like, who even does that?"
     thought "Robbie looks down at the map he’s holding and squints, before turning it on its side and staring at it."
+    show Robbie_N_Default at l, bounce
     robbie "…It’s probably fine."
     claire "Oh god, what sort of shitshow did we sign up for?"
     hide Rey_N_Nervous
-    show Rey_N_Default at r, bounce
-    hide cavemap
+    show Rey_N_Default at r
+    hide cavemap with dissolve
+    show Chance_N_Default at m, bounce
     chance "We should be fine guys, and anyway, we probably won’t even need a map! You guys have got me, and I’ve tackled more difficult caves in my sleep!"
+    show Robbie_N_Default at l, bounce
     robbie "Uh huh. Yeah I’m still using the map."
+    show Rey_N_Default at r, bounce
     rey "Well, I hope at least one of you knows their way around, cuz Claire and I don’t have a clue…"
     claire "You can say that again, I don’t know how easy it’ll be to navigate in those tight tunnels. I really wouldn’t be doing this if it wasn’t for you guys."
+    show Rey_N_Default at r, bounce
     rey "Hey… if you want we could head back? Maybe try for another time-"
+    show Robbie_N_Default at l, bounce
     robbie "No way!! This is the one day we have the time to do this,, c’mon I promise it’ll be fun!"
     hide Rey_N_Default
     show Rey_N_Speechless at r, bounce
-    rey "Robbie! If Claire's not up to it we shouldn't ofrce her to do this"
+    rey "Robbie! If Claire's not up to it we shouldn't force her to do this"
     hide Robbie_N_Default
     show Robbie_N_Awkward at l, bounce
     robbie "Right, right, sorry my bad."
     claire "Thanks Rey, but I should be fine. I’ve got you and the boys here, it’ll be fun, I promise!"
     hide Robbie_N_Awkward
     show Robbie_N_Default at l
+    show Chance_N_Default at m, bounce
     chance "Yeah! As long as you all stick by me, everything will be perfect."
     thought "As Chance says this, he looks over at Rey and, very obviously, winks at her. She turns to look away, a small blush spreading across her cheeks."
+    hide Robbie_N_Default at l
+    show Robbie_N_Cheeky at l, bounce
     robbie "C’mon! I can’t keep waiting like this, I wanna see what all’s in there!"
+    hide Robbie_N_Cheeky with dissolve
     thought "Robbie folds up the map, and starts climbing down the tunnel at your feet. Even as his head dips below the tunnel entrance, you can hear him laughing and shouting up at the group."
     rey "Ah- Robbie! Wait for us! You have the map you idiot!"
     claire "Rey, make sure he doesn’t fall down into a bottomless pit, would you?"
+    hide Rey_N_Speechless with dissolve
     thought "Rey smiles and nods, before climbing down after him, leaving you and Chance lagging behind."
     jump Trash
 
 label Trash:
     thought "As you prepare to descend into the hole, Something glints in the light of your phone flashlight. You squint, and in the corner of the tight space, right by Chance’s foot, is a glass beer bottle."
+    show Chance_N_Default at m, bounce
     chance "Okay, Rey and Robbie are up ahead, just waiting on you now Claire."
     thought "The sight of trash here makes you cringe a bit. Is it such a hassle for people to pick up after themselves?"
     menu:
@@ -328,80 +346,89 @@ label Trash:
             jump Throat
 label TrashA:
     #SHOW CHANCE TEASING
+    show Chance_N_Default at m, bounce
     chance "Pff, {i}really{/i}? Wow Claire, I didn’t know you’re suddenly an eco warrior now."
     claire "Come on, it’s not weird to treat nature with respect and stuff."
+    show Chance_N_Default at m, bounce
     chance "Ok, whatever you say Captain Planet."
+    show Chance_N_Default at m, bounce
     chance "Just hurry up alright?"
+    scene bg blacksquare with fade
     jump Throat
 
 label Throat:
     play music "caveroomtone1.ogg" loop if_changed volume 0.2
     if trashcounter < 1:
-        scene bg blacksquare
+        scene bg blacksquare with fade
         thought "You tear your gaze away from the litter, and drop down into the manhole after Rey."
     thought "The tunnel extends into a deep downward slope, which doesn’t make it easy to progress through."
-    scene bg tightsqueeze
+    scene bg tightsqueeze with fade
     thought "Above you, Chance is holding his flashlight with his mouth, and the unsteady light illuminates the tight crevice."
     thought "You’re able to shove your toe  into a ledge for a bit of leverage as you descend. Chance begins to descend too, and steps on your hand more than once."
     thought "Below you, Rey is in a similar position, arms and legs spread like a starfish to stay wedged in place. And below her is Robbie, casually leading the way."
     thought "His reassured voice echoes throughout the cavern, giving words of advice as his body naturally navigates through the squeeze. "
     scene bg cavealt with dissolve
-    show Robbie_N_Default at r
-    show Rey_N_Default at m
-    show Chance_N_Default at l
+    show Robbie_N_Default at r with dissolve
+    show Rey_N_Default at m with dissolve
+    show Chance_N_Default at l with dissolve
     thought "Eventually, you begin to see your friends turn and pull their way out of the climb. As you step out, you see Robbie staring at the map."
+    show Rey_N_Default at m
     claire "Everyone good? Why are we all just standing around?"
+    show Rey_N_Default at m, bounce
     rey "We’re at a fork in the road. Or, cave, I guess."
     hide Robbie_N_Default
-    show Robbie_N_Cheeky at r
+    show Robbie_N_Cheeky at r, bounce
     robbie "Also a fork is normally when it splits into two, and this one has three paths."
     hide Rey_N_Default
-    show Rey_N_Speechless at m
+    show Rey_N_Speechless at m, bounce
     hide Robbie_N_Cheeky at r
     show Robbie_N_Default at r
     rey "...dude shut up."
     hide Chance_N_Default
-    show Chance_N_Question at l
+    show Chance_N_Question at l, bounce
     chance "What does the map say, Rob?"
     hide Rey_N_Speechless
     show Rey_N_Default at m
     hide Robbie_N_Default
-    show Robbie_N_Question at r
+    show Robbie_N_Question at r, bounce
     robbie "Let me look..."
     thought "As he checks the map, you take a moment to sneak a glance for yourself."
-    show  cavemap at t
+    show cavemap at t with dissolve
     thought "None of the paths seem particularly different from each other, but when the room falls silent you’re able to pick up on a few faint details."
-    hide cavemap
+    hide cavemap with dissolve
     hide Robbie_N_Question
     show Robbie_N_Default at r
     hide Chance_N_Question
     show Chance_N_Default at l
+    show Rey_N_Default at m, bounce
     rey "The way forward looks pretty normal? Let’s take that."
     hide Chance_N_Default
-    show Chance_N_Happy at l
+    show Chance_N_Happy at l, bounce
     chance "Really? It looks so boring, the left and right paths seem more mysterious!"
     hide Robbie_N_Default
-    show Robbie_N_Question at r
+    show Robbie_N_Question at r, bounce
     robbie "Mm, they seem cool, but the middle one has tons of graffiti and junk on it. It could be like a secret party room or something!"
     claire "Hmm… Anything on the map, Robbie?"
     hide Chance_N_Happy
     show Chance_N_Default at l
     hide Robbie_N_Question
-    show Robbie_N_Default at r
+    show Robbie_N_Default at r, bounce
     robbie "Nah, no matter which path we take, they all go on for a while. I don’t know if we’d be able to explore all of these together…"
+    show Chance_N_Default at l, bounce
     chance "What if we split up? We could check each one ourselves, and that way it would be more of a challenge!"
     hide Rey_N_Default
-    show Rey_N_Speechless at m
+    show Rey_N_Speechless at m, bounce
     rey "You need {i}more{/i} of a challenge? Really?"
     hide Chance_N_Default
-    show Chance_N_Happy at l
+    show Chance_N_Happy at l, bounce
     chance "C'mon, it would be fun!"
     hide Robbie_N_Default
-    show Robbie_N_Cheeky at r
+    show Robbie_N_Cheeky at r, bounce
     robbie "It would be fun..."
+    show Rey_N_Speechless at m, bounce
     rey "No! What if we get lost or something?"
     hide Robbie_N_Cheeky
-    show Robbie_N_Default at r
+    show Robbie_N_Default at r, bounce
     robbie "If these two just go back and forth I think we'll stay here forever. Claire, what do you think?"
     hide Chance_N_Happy
     show Chance_N_Default at l
@@ -433,6 +460,7 @@ label StayTogetherLeft:
     hide Rey_N_Default
     show Rey_N_Smile at m
     rey "Me too! I definitely don't mind cooling off a bit, hehe."
+    scene bg blacksquare with fade
     jump Lungs
 label StayTogetherRight:
     play sound "mediumheartbeat.ogg" volume 0.25 loop
@@ -440,16 +468,18 @@ label StayTogetherRight:
     hide Chance_N_Default
     show Chance_N_Happy at l
     chance "I don't know! Let's check it out."
+    scene bg blacksquare with fade
     jump Heart
 label StayTogetherMid:
     claire "How about just going straight ahead?"
     hide Robbie_N_Default
     show Robbie_N_Awkward at r
     robbie "Not having to squeeze into one of the others sounds good, yeah."
+    scene bg blacksquare with fade
     jump PartyRoom
 
 label Lungs:
-    scene bg tightsqueezeflip
+    scene bg tightsqueezeflip with fade
     stop music
     play sound "deepwindv2.ogg" volume 0.3 fadein 1.0 fadeout 0.5
     thought "You turn sideways to shuffle through the narrow passageway. The wind from the other side is cold, leaving goosebumps wherever it can find bare skin."
@@ -501,7 +531,7 @@ label PartyRoom:
     hide Rey_N_Smile
     hide Robbie_N_Awkward
     hide Chance_N_Default
-    scene bg blacksquare
+    scene bg blacksquare with fade
     play sound "clothingshufflev3.ogg" volume 0.2
     play voice "rockscrapingv1.ogg" volume 0.5
     thought "You turn sideways to shuffle through the narrow passageway, feeling the rock cling to your back."
@@ -511,19 +541,18 @@ label PartyRoom:
     play voice "footstepsreverb.ogg"
     thought "The sound of your friend’s footsteps fills up the space alongside the falling pebbles that come off the walls as your bodies inch through the passageway."
     scene bg partyroom with dissolve
-    show Robbie_N_Default at m
-    show Rey_N_Default at l
-    show Chance_N_Default at r
     thought "The space widens as you enter this new room with a ceiling high enough to stand upright."
     thought "Thank God–you aren’t necessarily claustrophobic, but that narrow passage you came through questioned how much of a squeeze you can truly handle."
     thought "From the light of your phone, you see graffiti spray painted on the stone walls."
     thought "Some are tags from people who have been here, messily scribbled on with Sharpie markers. Others are larger, spray-painted phrases such as “Do not enter” and “Funky”."
     thought "Upon looking down, you see a small handwritten note “Do not continue. It’s alive.”"
-    hide Robbie_N_Default
-    show Robbie_N_Cheeky at m
+    show Rey_N_Default at l with dissolve
+    show Chance_N_Default at r with dissolve
+    show Robbie_N_Cheeky at m with dissolve
+    show Robbie_N_Cheeky at m, bounce
     robbie "Oh hell yeah! Finally some signs of life in here!"
     hide Rey_N_Default
-    show Rey_N_Guilt at l
+    show Rey_N_Guilt at l, bounce
     rey "Ooh, have other students been down here?"
     chance "Hmm, it looks like it yeah."
     robbie "Man, I’ve seen some weird messages, but I think these take the cake. Like, “OOoOoOoh, the cAvE is aLiVe ooOoOh!!”, come on!"
@@ -540,7 +569,7 @@ label PartyRoom:
     hide Rey_N_Question
     hide Chance_N_Happy
     show Chance_N_Default at r
-    show Rey_N_Default at l
+    show Rey_N_Default at l, bounce
     rey "Mhm! Don't go too far!"
     menu:
         "Look around the room.":
@@ -561,16 +590,16 @@ label Flashlight:
     chance "Find anything interesting?"
     claire "Not really, no."
     hide Rey_N_Default
-    show Rey_N_Nervous at l
+    show Rey_N_Nervous at l, bounce
     rey "I still don’t really know what’s up with this place. Is the graffiti just from pranksters, or…"
     hide Robbie_N_Default
-    show Robbie_N_Cheeky at m
+    show Robbie_N_Cheeky at m, bounce
     robbie "It’s probably from dead hikers, doomed to forever haunt these caverns! OooOooOohh!"
     hide Rey_N_Nervous
-    show Rey_N_Speechless at l
+    show Rey_N_Speechless at l, bounce
     rey "Shut up!!!"
     hide Chance_N_Default
-    show Chance_N_Nervous at r
+    show Chance_N_Nervous at r, bounce
     chance "Come on, don't pull this bro."
     robbie "Oh no! What's happening? I-i think the lights aren't working!"
     thought "Robbie turns off his flashlight, plunging the room into darkness. Immediately, Rey screams, and he starts laughing to the point of tears."
@@ -622,7 +651,6 @@ label PlayAlong:
     claire "Oh noOoOo! I can’t see anything! I think our flashlights died!"
     rey "Not you too Claire! Guys, come on, please?"
     robbie "It’s so dark… something could be lurking here, and we wouldn’t even know! Something… like… a… GHOST!"
-    play sound "celinescream.ogg"
     thought "You and Robbie both laugh, as Rey yells at you two, and Chance stays quiet."
     thought "After a pause, Robbie turns on the flashlight, the light illuminating on everyone except an absent Chance."
     scene bg partyroom
@@ -637,11 +665,11 @@ label PlayAlong:
     hide Rey_N_Speechless
     show Rey_N_Nervous at r
     rey "And I- oh. Wait what?"
+    play sound "guyscream.ogg"
     robbie "I don't see him here. Maybe he's hiding?"
     thought "You frown. Chance did like to join Robbie’s pranks; maybe he ran off as a joke? But you didn’t hear any footsteps or anything."
 label PlayAlong2:
     thought "You open your mouth to suggest-"
-    play sound "guyscream.ogg"
     hide Robbie_N_Question
     show Robbie_N_Awkward at l
     thought "All of you freeze."
@@ -655,8 +683,8 @@ label PlayAlong2:
     rey "Yeah! Yeah that's probably it!"
     scene bg blacksquare with dissolve
     scene bg partyroomempty with dissolve
-    show Robbie_N_Awkward at l
-    show Rey_N_Nervous at r
+    show Robbie_N_Awkward at l with dissolve
+    show Rey_N_Nervous at r with dissolve
     thought "The rendezvous point isn’t  far from the room you are in. A short walk later, and you’re back at the check-in spot."
     thought "Still no Chance. The three of you wait in silence for a few minutes."
     thought "Every distant echo in the cave makes you hold your breath. But Chance never appears."
@@ -668,6 +696,8 @@ label PlayAlong2:
         "Leave the cave and go seek help.":
             jump PlayAlongA
         "Stay in the cave and look for Chance.":
+            hide Rey_N_Nervous
+            hide Robbie_N_Awkward
             jump PlayAlongB
 label PlayAlongA:
     claire "We clearly don't know this cave that well. If he really is missing, we need professional help."
@@ -745,11 +775,13 @@ label Ending2End:
 label PlayAlongB:
     claire "We can't just leave him down there, let's go find him."
     hide Robbie_N_Question
-    show Robbie_N_Default at l
-    show Rey_N_Question at r
+    show Robbie_N_Default at l with dissolve
+    show Rey_N_Question at r with dissolve
     robbie "Yeah, and he’s probably not far anyway! We’ll find him in no time!"
     rey "Okay…I don’t like going further into this, whatever {i}this{/i} is, but let’s go."
     claire "We got this, just stay close, and keep your flashlights on, okay?"
+    hide Robbie_N_Default
+    hide Rey_N_Question
     jump LookForChance
 
 label Heart:
@@ -1063,14 +1095,13 @@ label Chance:
     jump RendezvousPoint
 
 label LookForChance:
-    hide Robbie_N_Default
-    hide Rey_N_Question
     thought "You venture in the direction you heard the scream, followed by Rey and then Robbie."
     play sound "footstepsreverb.ogg"
     thought "As you traverse into the depths, echoes coming from your shoes and nearby water droplets become louder."
     thought "You feel the air grow thick with the dust kicking up, filling your lungs with the unventilated air."
     rey "Chance! You dummy, where are you?"
     robbie " Dude, this isn’t as funny anymore, just come out already! "
+    hide Rey_N_Question
     rey "“Ah!”"
     thought "You spin around, startled."
     show Rey_N_Speechless at l
@@ -1225,17 +1256,16 @@ label Ending8:
     thought "Claire was able to find her “friends” in the depths of Hellmouth. She leaves with “Robbie”, “Rey” and “Chance”."
 
 label GoWithRobbie:
-    scene bg cave
+    scene bg cave with dissolve
     show Robbie_N_Default at r
-    show Rey_N_Nervous at l
     thought "You try to keep up with Robbie as he moves down the tunnel."
-    hide Robbie_N_Default
+    hide Robbie_N_Default with dissolve
     thought " For a brief moment, you glance in the direction of Rey, and when you swivel back to face Robbie…"
     thought "He’s gone."
     claire "Uh, Robbie? Where did you go?"
     robbie "Claire…"
     thought "The response comes from a passage to your left. You slip down it, and almost run straight into Robbie."
-    show Robbie_M_Default at r
+    show Robbie_M_Default at r, bounce
     claire "GOD! Robbie, I almost ran straight into you dude!"
     robbie "Sorry."
     claire "No, it’s fine I just didn’t see you for a second. What’s up?"
@@ -1644,5 +1674,328 @@ label MimicMayhem:
     thought "A couple feet away from you is Chance…"
     thought "And a body."
     thought "Something is wrong. Though you are shining your bright flashlight at him, he seems to not notice you."
-    thought ""
-    thought ""
+    thought "  notice you."
+    play sound "pestopastav2.ogg"
+    thought "The creature’s fingers begin to grow, pulling at the imitation flesh but not tearing. They grow into jagged points."
+    thought "You watch as the thing pretending to be your friend kneels down beside the body, and grasps the man's face."
+    thought "It’s claws piece skin, and begin to curl its fingers until it can get a firm grip of the pocket between teeth and cheek."
+    thought "The thing grabs onto its own arm, and with it’s whole body begins to yank at the face."
+    thought "Only then you realize what it's trying to do. Stricken with nausea, you look away. The ungodly sounds ring throughout the room as the thing rips…"
+    thought "and digs…"
+    thought "and tears…"
+    thought "and pulls…"
+    play sound "celinescream.ogg"
+    thought "A deafening screech echoes around the room. The thing mimicking your friend screams, and then you hear a man's voice speak out."
+    stranger "H-h-h-h-he-hello? Hello?? Can someone hear me?"
+    thought "then a woman's voice… "
+    stranger "Please, oh please can someone help me? I'm stuck, I need help!"
+    thought "then a cry that you swear came from a child…"
+    stranger "Mommy!!"
+    thought "As it continues to adjust, you hear Robbie's voice…"
+    stranger "H-hey guys this isn't funny! Where are you? Chance?"
+    thought "then Rey's voice…"
+    stranger "Where are you guys? Can you hear me? Claire? Chance? Robbie?"
+    thought "..then Chance…"
+    stranger "Okay where the hell did they go off to? Rey? Claire? If you can hear me, come here!"
+    thought "and then…"
+    thought "..the thing speaks in your voice."
+    stranger "Who are you?"
+    play sound "footstepssquishynormaltrans.ogg"
+    thought "You run."
+    play audio "heavybreathing.ogg" loop
+    play music "fastheartbeat.ogg" loop
+    thought "Your feet fly beneath you, stumbling over rocks and uneven ground. You can hear whatever that THING is pursuing you, its footsteps, heavy thumps, rapid thumps."
+    thought "Your mind racing, you reach a fork in the tunnel and quickly dart down a direction, not bothering to stall and debate which way to go."
+    thought "You don’t have time."
+    thought "You need to get away."
+    thought "You need to get away, or else–"
+    stop audio
+    stop music
+    play sound "rocksfallingv1.ogg"
+    play audio "footstepsreverb.ogg" loop
+    thought "A gasp escapes you as you slam face first into a stone wall."
+    thought "No. No. Nonononono–"
+    thought "A dead end."
+    thought "A FUCKING dead end."
+    stop audio
+    thought "You hear the thumping footsteps draw close, and then slow to a stop."
+    thought "Feeling your heart pound out of your chest, you slowly turn around."
+    thought "The creature stares at you with rugged textured eyes behind the skin it wears."
+    thought "The edges of the stolen face sink into the jagged imitation of human flesh. Its hands remained locked open, waiting for your next move."
+    if bottle > 0:
+        menu:
+            "Scream for help.":
+                thought "You scream for help, pleading for someone, anyone to come save you."
+            "Fight":
+                jump Fight
+label Fight:
+    thought "You slowly reach into your bag, allowing no sudden movements to alarm it as it tracks your movement. There has to be something here to help."
+    thought "Half empty plastic water bottle… receipts… gum… useless."
+    thought "Your hand then glides across the neck of a bottle you picked up earlier."
+    stranger "“What…”  it says in Chance’s voice"
+    stranger "“Are…” it says in Rey’s voice"
+    stranger "“You…” it says in Robbie’s voice"
+    stranger "“Doing…?” it says in your voice"
+    thought "You wrap your hand around it, holding it so tightly to the point that it feels as though your knuckles are about to rip apart."
+    thought "As you begin to pull it out, the creature lunges at you."
+    thought "In a sudden impulse move, you yank the bottle out of your bag and swing at the creature. The glass shatters as its head concaves to the blunt force."
+    thought "The skin that once melded into its mockery flesh hangs loose in the indentation. "
+    thought "It staggers backwards with a gut wrenching scream ringing throughout the tight room."
+    thought "It glares at you one final time, putting together the remains of whatever voice it has left, it asks… "
+    stranger "Light…not…mechanical ways. Warmth?"
+    thought "The creature collapses, its body sinking into the ground below."
+    jump Ending10
+
+    if bottle == 0:
+        menu:
+            "Scream for help.":
+                thought "You scream for help, pleading for someone, anyone to come save you."
+            "Fight":
+                jump FightFake
+label FightFake:
+    thought "You slowly reach into your bag, allowing no sudden movements to alarm it as it tracks your movement. There has to be something here to help."
+    thought "Half empty plastic water bottle…receipts… gum…useless."
+    stranger "“What…”  it says in Chance’s voice"
+    stranger "“Are…” it says in Rey’s voice"
+    stranger "“You…” it says in Robbie’s voice"
+    stranger "“Doing…?” it says in your voice"
+    thought "You beg for something to be in here to come to help you. The bag begins to rapidly ruffle as you desperately try to find something!! Anything!!"
+    jump Scream
+label Scream:
+    thought "You hear the gutteral sound of blades digging into organs. It is only when your stomach runs cold that you realize what happened."
+    thought "You can’t look down though. No, your eyes are locked into the ones behind the stolen flesh. It yanks the claws out of your intestines, allowing you to stagger backwards to the wall."
+    thought "It closes the gap once again, shoving it’s talons in the same gouge in your stomach with more force."
+    thought "You feel it piece not only through your organs, but your spine slides between its fingers  as they make an exit out your back."
+    thought "You hear the wall behind you crack as it penetrates the rock with the remaining force."
+    thought "It slightly curves its fingers before yanking its hand out, hollowing out more of the crevice in your torso."
+    thought "You fall to the ground and watch as the creature stabs and rips into your still conscious body."
+    thought "The feeling of your flesh being rendered to shreds or the feeling of your torso going cold from your blood splattering across the floor is nowhere near as horrifying as watching the creature reach for its own face."
+    thought "In the last moments of your consciousness, you watch as it begins to dig into its own flesh and peel off the previously stolen face. It looks at you, and begins to reach for yours."
+    jump Ending7
+label Ending10:
+    scene bg cavetitlescreen
+    show Rey_N_Smile at l
+    show Robbie_N_Cheeky at m
+    show Chance_N_Happy at r
+    window hide
+    pause
+    thought "Claire is able to find Chance and “Chance” within the depths of the Hellmouth caves."
+    thought "In trying to decipher who the real Chance is, she discovers a strange, unidentifiable creature that seems to have the ability to MIMIC people’s voices and appearance."
+    thought "Claire is able to defend herself against the mimic and escape the caves with Robbie, Rey and Chance"
+label Ending7:
+    scene nobodydied
+    window hide
+    pause
+    thought "Claire is able to find Chance and “Chance” within the depths of the Hellmouth caves."
+    thought "In trying to decipher who the real Chance is, she discovers a strange, unidentifiable creature that seems to have the ability to MIMIC people’s voices and appearance."
+    thought "Claire fails to fend off the mimic, and dies in Hellmouth caves. What happens to Chance, Rey and Robbie is unknown."
+label Separate:
+    scene bg cavealt
+    show Chance_N_Default at l
+    show Robbie_N_Default at r
+    show Rey_N_Speechless at m
+    claire " I think it makes more sense to split up for a bit."
+    hide Rey_N_Speechless
+    show Rey_N_Nervous at m
+    rey "…Ok. If you’re sure, but I'm tagging along with one of the boys."
+    hide Chance_N_Default
+    show Chance_N_Happy at l
+    chance "We’ll be fine! We’ve got our flashlights, and this cave doesn’t even seem that deep! This way, we’ll be out of here in no time!"
+    robbie "Okay, if we’re doing this, let’s set up a rendezvous point alright?"
+    claire "Mhm, if any of you hit a dead end, or need to come back, this is our spot. Let’s all meet back here once we’re done, alright?"
+    chance "Sounds perfect! See you then"
+    jump SepPaths
+label SepPaths:
+    scene bg partyroomempty
+    thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
+    thought "To the right, you feel a strange sort of hum vibrate the bottom of your feet. It reverberates off the walls with a subtle noise. How curious–what could that be?"
+    thought "Straight ahead is the largest opening, an entrance wide enough to walk into without a necessity to squeeze."
+    if SepLungsVar == 0:
+        if SepHeartVar == 0:
+            if SepPartyRoomVar == 0:
+                menu:
+                    "Left, toward the sound.":
+                        jump SepLungs
+                    "Right, toward the vibration.":
+                        jump SepHeart
+                    "Straight ahead, toward the large tunnel entrance.":
+                        jump SepPartyRoom
+    if SepLungsVar == 1:
+        if SepHeartVar == 0:
+            if SepPartyRoomVar == 0:
+                menu:
+                    "Right, toward the vibration.":
+                        jump SepHeart
+                    "Straight ahead, toward the large tunnel entrance.":
+                        jump SepPartyRoom
+    if SepLungsVar == 1:
+        if SepHeartVar == 1:
+            if SepPartyRoomVar == 0:
+                menu:
+                    "Straight ahead, toward the large tunnel entrance.":
+                        jump SepPartyRoom
+    if SepLungsVar == 1:
+        if SepHeartVar == 1:
+            if SepPartyRoomVar == 1:
+                thought "The unsettling feeling of this isolation begins to settle in,  and you realize it’s probably time to meet up with the others, anyway. You turn and start to make your way back to the rendezvous point."
+                jump SepRendezvousPoint
+    if SepLungsVar == 0:
+        if SepHeartVar == 1:
+            if SepPartyRoomVar == 0:
+                menu:
+                    "Right, toward the vibration.":
+                        jump SepHeart
+                    "Straight ahead, toward the large tunnel entrance.":
+                        jump SepPartyRoom
+    if SepLungsVar == 0:
+        if SepHeartVar == 1:
+            if SepPartyRoomVar == 1:
+                menu:
+                    "Left, toward the sound.":
+                        jump SepLungs
+    if SepLungsVar == 0:
+        if SepHeartVar == 0:
+            if SepPartyRoomVar == 1:
+                menu:
+                    "Straight ahead, toward the large tunnel entrance.":
+                        jump SepPartyRoom
+
+label SepLungs:
+    $SepLungsVar = 1
+    scene bg tightsqueeze
+    thought "You turn sideways to shuffle through the narrow passageway. The wind from the other side is cold, leaving goosebumps wherever it can find bare skin."
+    thought "It lightly pushes against you and your friends but gets stronger the closer you get."
+    thought "Occasionally it will ease up but be replaced by a gust of wind from behind."
+    thought "You don’t remember there being wind from the previous room, though maybe you just weren’t paying enough attention to realize it was there."
+    thought "Upon entering the vast space, the winds are deafening. It’s almost to the point where it’s hard to breathe."
+    thought "For a brief moment, the wind slows down, and the sound is replaced by the air current rapidly traversing through the passageway your group once came through."
+    thought "You take a breath to enjoy this moment of clarity, but it is short-lived as the rapid wind starts up again."
+    menu:
+        "Stay a moment longer, looking around the room.":
+            thought "A cigarette butt is lying nearby on a rock."
+            menu:
+                "Pick up the trash.":
+                    $trashcounter += 1
+                    "You pick it up. Yuck."
+                    jump SepGoBackExplore
+                "Leave it be.":
+                    "You leave it."
+                    jump SepGoBackExplore
+        "Go back.":
+            jump SepGoBackExplore
+label SepPartyRoom:
+    $SepPartyRoomVar = 1
+    scene bg tightsqueezeflip
+    thought "You turn sideways to shuffle through the narrow passageway, feeling the rock cling to your back."
+    play sound "rocksfallingv2.ogg"
+    thought "The sound of your own footsteps fills up the space alongside the falling pebbles that come off the walls as your body inches through the passageway."
+    scene bg partyroom with dissolve
+    thought "The space widens as you enter this new room with a ceiling high enough to stand upright."
+    thought "Thank God–you aren’t necessarily claustrophobic, but that narrow passage you came through questioned how much of a squeeze you can truly handle."
+    thought "From the light of your phone, you see graffiti spray painted on the stone walls."
+    thought "Some are tags of the people who have been here, messily scribbled on with Sharpie markers. Others are larger spray-painted phrases such as “Do not enter” and “Funky”."
+    thought "Upon looking down, you see a small handwritten note “Do not continue. It’s alive.”"
+    menu:
+        "Stay a moment longer, looking around the room.":
+            thought "You spy a flattened ramen cup, muddied on the ground."
+            menu:
+                "Pick up the trash.":
+                    play sound "pickupsoundv2.ogg"
+                    $trashcounter += 1
+                    thought "You pick it up. You guess you should take this with you."
+                    jump SepGoBackExplore
+                "Leave it be.":
+                    thought "You turn away."
+                    jump SepGoBackExplore
+label SepHeart:
+    $SepHeartVar = 1
+    scene bg tightsqueeze
+    thought "You squeeze into the narrow passageway, the walls scratching against whatever bare skin it can find. Breathing in is taxing, as you feel your expanded stomach push against the front wall."
+    play sound "mediumheartbeatv2.ogg" loop
+    thought "The passage finally begins to widen in front of you, and you draw a breath, inching your way  forward. Just keep moving forward."
+    thought "Slowly, the walls loosen their grip on you and begin to give way."
+    scene bg cave
+    thought "You find yourself in a small cavern; it wasn’t the most spacious thing in the world, but compared to what you had just been through, it felt like a penthouse suite."
+    thought "Your brain pulses against the sides of your skull, feeling the rhythm align with the sound of your heartbeat in your ears."
+    thought "Blood pulsing through your body becomes apparent to you as you feel its pressure in your fingers and toes."
+    thought "The rhythmic beating of your blood, no, your heart, feel external. It’s all around you, emanating from the walls."
+    thought "You see it out of the corner of your eye, the rocks organically begin to pulse alongside the rhythm of your exhausted body."
+    menu:
+        "Calm yourself down.":
+            thought "You take a deep breath and put a hand on a nearby rock to steady yourself.  Immediately you spring back from the contact."
+            thought "Instead of touching a rough surface underneath your palm, you are instead greeted with thin protruding lines."
+            thought "They’re almost like spiderwebs sticking out from the rocks, but within that brief moment of contact, you could’ve sworn you felt…a pulse? They almost look like…"
+            menu:
+                "veins":
+                    thought "You glance down at your own inner arm, the weak light of your flashlight illuminating your skin. The pattern on the rocks match the spindly contours of your veins. You shiver."
+                    jump SepStayOrContinue
+                "a weird rock formation":
+                    thought "You shake your head, dismissing whatever bizarre connection your brain was about to make."
+                    jump SepStayOrContinue
+        "Take a closer look.":
+            thought "You squint, convinced your eyes were playing tricks on you. This place had to be playing tricks on you, right? Rocks didn’t move like that. Actually, rocks just don’t move on their own in general"
+            jump SepStayOrContinue
+label SepStayOrContinue:
+    if SepStayVar == 0:
+        $SepStayVar += 1
+        menu:
+            "Stay a moment longer, looking around the room.":
+                thought "You notice a piece of trash on the floor; a crumpled soda can."
+                menu:
+                    "Pick it up.":
+                        thought "You pick up the can; even in a place as unpleasant as this, there shouldn’t be trash laying around. Pollution sucked no matter where it was."
+                        jump SepStayOrContinue
+                    "Leave it.":
+                        thought "You shake your head. You don’t want to carry around a piece of gross trash; this place was already unpleasant enough."
+                        jump SepStayOrContinue
+            "There’s a path at the end of the cavern; the opening is small, barely shoulder width. You start toward it.":
+                jump SepUpperIntestines
+    if SepStayVar == 1:
+        menu:
+            "There’s a path at the end of the cavern; the opening is small, barely shoulder width. You start toward it.":
+                jump SepUpperIntestines
+label SepUpperIntestines:
+    scene bg tightsqueeze
+    thought "You kneel before the small opening and peer inside, seeing that there will be hardly any room to move."
+    play sound "mediumheartbeat.ogg" loop
+    play audio "rockscrapingv2.ogg" loop
+    thought "Taking a deep breath, you crawl into the tunnel, feeling the walls lock you into the passageway. Your knees have no room to bend, so you drag your feet across the floor and inch your way across."
+    stop audio
+    thought "For a moment, you stop to breathe, but feeling the heat of your breath reflecting off the frontal wall only causes panic to rise."
+    play music "heavybreathing.ogg" loop
+    thought "Breathe. You must breathe."
+    thought "Being reminded to breathe makes your mind aware of your lung’s inability to work on their own now. You must focus."
+    thought "Your breath is kept at a steady pace to fight against the panic in your racing heart. You want to turn back. You should turn back."
+    play audio "rockscrapingv2.ogg" loop
+    thought "Upon trying to shuffle backwards you find that your body has subconsciously leaned your torso forward. Trying to move back feels contradictory to the way you’ve been positioned."
+    thought "As you continue to shuffle through the crevice, you feel the slight breeze of an opening. Your anxieties lessen for a moment, allowing you to retain your composure."
+    thought "You continue to shuffle forward, finally latching your hand to the corner of the exit."
+    stop audio
+    stop sound
+    stop music
+    jump SepHallOfFaces
+label SepHallOfFaces:
+    scene bg blacksquare
+    thought "Grabbing to the exterior wall, you begin to pull yourself closer to the exit. Your other arm reaches out the thin passageway, allowing the leverage to pull your head out."
+    thought "Then your torso. Finally, your knees bend and push their way out, until you fall to the floor."
+    thought "You take a deep breath in, slightly proud that you made it through in one piece."
+    thought "In the corner of your eye, you see a face."
+    thought "There should be no one here."
+    thought "A slight gasp escapes as you jump back. You raise your phone flashlight to illuminate the room."
+    thought "You lock eyes with the sculpture of a head, no, a face carved out of the wall. Upon looking around, you see the faces that line the walls."
+    thought "Though no two are looking in the same direction, you can’t help but feel disturbed by their presence."
+    menu:
+        "Look around more.":
+            thought "You notice an empty plastic water bottle that someone has wedged into a crack in the wall."
+            menu:
+                "Pick up the trash.":
+                    $trashcounter += 1
+                    thought "You reach up and pry the trash free. Who had left this down here?"
+                    jump smally
+                "Leave it be.":
+                    thought "You dismiss it, and turn back the way you came."
+                    jump smally
+label smally:
+    scene bg partyroomempty
+    "You find yourself back at the crossroads from before. You look down the three branching tunnels, wondering where to go next."
+    jump SepPaths
