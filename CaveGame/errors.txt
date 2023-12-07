@@ -2,17 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1438: choice menuitem expects a non-empty block.
-    "Leave the cave with the group.":
-                                     ^
+File "game/script.rpy", line 1501: expected statement.
+    cavealt
+           ^
 
-File "game/script.rpy", line 1452: choice menuitem expects a non-empty block.
-    "Leave the cave with the group.":
-                                     ^
+File "game/script.rpy", line 1502: expected statement.
+    rey n nervous r
+                   ^
 
-File "game/script.rpy", line 1466: choice menuitem expects a non-empty block.
-    "Leave the cave with the group.":
-                                     ^
+File "game/script.rpy", line 1503: expected statement.
+    chance m default m
+                      ^
+
+File "game/script.rpy", line 1504: expected statement.
+    robbie n question l 
+                        ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Wed Dec  6 22:48:48 2023
+Thu Dec  7 00:45:00 2023
