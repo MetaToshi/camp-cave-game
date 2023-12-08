@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2270: is not terminated with a newline. (Check strings and parenthesis.)
-(Perhaps you left out a " at the end of the first line.)
-                thought"
+File "game/script.rpy", line 2328: menu statement expects a non-empty block.
+    menu:
+        ^
+
+File "game/script.rpy", line 2329: if statement expects a non-empty block.
+    if corkscrewstom == 1:
+                          ^
+
+File "game/script.rpy", line 2424: end of line expected.
+    jump Ending11:
+                 ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Fri Dec  8 13:18:08 2023
+Fri Dec  8 15:00:15 2023

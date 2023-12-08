@@ -497,7 +497,7 @@ label Paths:
                     thought "To the right, you feel a strange sort of hum vibrate the bottom of your feet. It reverberates off the walls with a subtle noise. How curious–what could that be?"
                     menu:
                         "Right, toward the vibration.":
-                            jump StayTogetherRight 
+                            jump StayTogetherRight
     if goleft == 1:
         if goright == 1:
             if gomid == 0:
@@ -514,7 +514,7 @@ label Paths:
                         "Left, toward the sound.":
                             jump StayTogetherLeft
                         "Straight ahead, toward the large tunnel entrance.":
-                            jump StayTogetherMid      
+                            jump StayTogetherMid
     if goleft == 0:
         if goright == 1:
             if gomid == 1:
@@ -531,7 +531,7 @@ label Paths:
                         "Left, toward the sound.":
                             jump StayTogetherLeft
                         "Right, toward the vibration.":
-                            jump StayTogetherRight                            
+                            jump StayTogetherRight
     if goleft == 1:
         if goright == 1:
             if gomid == 1:
@@ -588,9 +588,9 @@ label LeaveCave:
 label ENDING4:
     # Ending Screen: Show outside cave entrance, no sprites.
     scene bg cavetitlescreen
-    thought "ENDING 4  - Claire is separated from Robbie, Rey and Chance within Hellmouth caves. Spooked by the strange atmosphere of the caves, Claire leaves by herself."
+    thought "Claire is separated from Robbie, Rey and Chance within Hellmouth caves. Spooked by the strange atmosphere of the caves, Claire leaves by herself."
     thought "What happens to Robbie, Rey and Chance is unknown."
-    return 
+    return
 
 
 label Lungs:
@@ -1378,7 +1378,7 @@ label Ending8:
     window hide
     pause
     thought "Claire was able to find her “friends” in the depths of Hellmouth. She leaves with “Robbie”, “Rey” and “Chance”."
-    return 
+    return
 
 label GoWithRobbie:
     scene bg cave with dissolve
@@ -2298,11 +2298,137 @@ label Womb:
         "Hesitate":
             thought "You watch Rey crawl through the low passage, but your feet don’t move. For some reason, something doesn’t sit quite right with you."
             thought "Before you have a chance to second guess yourself, you trust your gut and hurry forward  to slip into a tunnel off to the side."
-            thought "You hear voices up ahead, and tense for a moment." 
+            thought "You hear voices up ahead, and tense for a moment."
             claire "Is someone there?"
             jump SafeZone
 
 label SafeZone:
         claire "lmao"
 label Stomach:
-        thought "yomama"
+    scene bg fleshcavealt1
+    if corkscrewstom == 0:
+        thought "You squirm through the final twist, your hips at an uncomfortable angle that makes a pain throb up your spine."
+        thought "The air begins to feel warm and damp, and a strange smell stings your nostrils; almost acidic, with the metallic undertones of rotting flesh."
+        thought "You swallow down  the urge to gag, and wiggle out onto the flat floor. You bend your knees to pull your legs free, swinging them around to–"
+        thought "You jolt, adrenaline flooding through every part of your body as your legs dangle into open air."
+        thought "A scream is pushed down as you realize the thing you thought was floor was actually a narrow ledge, barely foot wide before it drops off into gaping nothingness."
+        claire "Rey? Rey?!"
+        thought "You quickly turn around, hoping to spot your friend. In a split second, you see the grin of your friend begin to meld into a nearby wall until it disappears altogether."
+    if corkscrewstom == 1:
+        thought "Tears stream down your face. You want to continue screaming, but the convulsing walls leave no forgiveness for you."
+        thought "You’re only able to suck in small gasps of air that tremble out in the whimpers of your cries."
+        thought "You feel the walls begin to loosen, slipping you down the passageway. "
+        thought "In one sudden convulsion, the walls open, dropping you for what feels like hours, but in reality is probably no more than a couple seconds."
+        thought "The air begins to feel warm and damp, and a strange smell stings your nostrils; almost acidic, with the metallic undertones of rotting flesh."
+        thought "You swallow down  the urge to gag, and stand onto the flat floor. Everything in you screams to run. Run as fast as you can."
+        thought "You briefly try to run, adrenaline flooding through every part of your body, but rapidly stop yourself as you find there is no more space in front of you."
+        thought "A scream is pushed down as you realize the thing you thought was floor was actually a narrow ledge, barely foot wide before it drops off into gaping nothingness."
+    thought "You’d reached a pit, yawning in front of you like a horrid black void."
+    if corkscrewstom == 0:
+        menu:
+            "Go back":
+                jump BackTrack
+# if corkscrewstom == 1:
+label Backtrack:
+    scene bg cave
+    thought "You backtrack through the passage, keeping your breathing as steady as you can. But you must’ve taken a wrong turn somewhere because the cavern you suddenly find at the end of the tunnel isn’t the same one you came in through."
+    thought "You hear a rustle and tense."
+    claire "Is someone there?"
+    jump SafeZone
+label StomachA:
+    scene bg fleshcavealt1
+    thought "You precariously shuffle away from the edge, but there isn’t anywhere to go, short of backtracking through the tight passage you just came through."
+    menu:
+        "You decide to go back.":
+            jump Backtrack
+        "You don't want to go back through that awful passage. Looks like you're working with what you got.":
+            jump StomachB
+label StomachB:
+    scene bg fleshcavealt1
+    thought "You idle on the edge, looking around. Apart from the ledge you’re sitting on, there’s nothing else protruding from the curved walls, and no other opening that you can see."
+    thought "The smell of rancid meat is almost overpowering, and you cover your mouth with one hand, eyes water."
+    thought "The movement causes a wayward rock to skitter off the ledge and into the pit, and you hold your breath to see if you can hear when it lands."
+    thought "..."
+    thought "Seconds pass. You don’t hear the rock land, but you do hear something else. It sounds like…voices?"
+    if corkscrewstom == 0:
+        thought "Had Rey fallen down there? Was she hurt?"
+    menu:
+        "You decide to go back.":
+            jump Backtrack
+        "You stay for a moment longer":
+            jump StomachB2
+label StomachB2:
+    scene bg fleshcavealt1
+    thought "You lean in closer. Yes, voices. They weren’t saying words, but muted groans and stuttering gasps."
+    if corkscrewstom == 0:
+        thought "It didn't sound like Rey, but..."
+    if corkscrewstom == 1:
+        menu:
+            "You decide to go back.":
+                jump Backtrack
+            "Call out for help":
+                claire "Hello! Is someone there?"
+                jump StomachB22
+    if corkscrewstom == 0:
+        menu:
+            "You decide to go back.":
+                jump Backtrack
+            "Call out for help":
+                claire "Hello! Is someone there?"
+                jump StomachB22
+label StomachB22:
+    scene bg fleshcavealt1
+    thought "Your words are swallowed up in the heavy moist air. You’re beginning to sweat due to the smothering warmth of the chamber. Your hands are slick as they grip the ledge beneath you and you lean forward more. “Hello–is anyone down th–"
+    thought "Your hands slip on the stone ledge, and your balance is lost. A scream tears loose from your throat as you fall into the pit, your phone flashlight sliding from your hand." with sshake
+    thought "..."
+    scene bg blacksquare with fade
+    jump StomachB22B
+label StomachB22B:
+    scene bg blacksquare
+    thought "You aren’t sure how long you fall, but you expect to be dead when you hit the ground, anticipating hard stones or stalagmites that will spear you through."
+    play sound  "bonesandflesh.ogg"
+    thought "Instead, you land on something that squelches loudly when your body makes contact with it."
+    thought "Your phone flashlight has gone out, lost somewhere out of reach."
+    play sound "bubbles 2.ogg" loop volume 0.2
+    thought "In the dark, you hear the sound of something bubbling, and realize you’re sitting in warm standing liquid. Your whole body is tingling."
+    thought "Your breathing escalates."
+    thought "A noie comes from your left and you jump. it's a voice, weak and gasping."
+    stranger "H-help me…"
+    stop sound fadeout 2.0
+    if corkscrewstom == 0:
+        thought "This definitely wasn't Rey. Where had she gone?"
+    thought "You tentatively reach out, and feel the rough fabric of a backpack and what seems like metal carabiners and a length of rope. A cave diver?"
+    claire "Hello? Who are you? How long have you been down here?"
+    diver "Help…help…please…"
+    claire "Are you hurt?"
+    thought "The tingling on your skin is getting worse. You continue to fumble in the dark, and the next thing you touch is something smooth and long, its base covered in spongy material."
+    thought "The cave diver groans. It almost feels like a chicken drumstick in its shape, and you laugh at the incredulity of it. "
+    claire "What's this?"
+    diver "...t-the liquid ...my leg..."
+    claire "Your {i}leg?{/i}"
+    thought "You feel over the smooth part again. It’s too hard to be flesh. Feeling more reveals that it curves slightly, almost like–"
+    thought "-like a bone.{fast}"
+    thought "Despite the warm liquid around you, your blood runs cold. Your hand touches the spongy part again, feeling loose flaps of–"
+    thought "The smell of rotting meat is stronger down here."
+    thought "You suck in a breath. No. No. No."
+    thought "Your hand smells metallic."
+    diver "The liquid…"
+    thought "The diver groans again."
+    thought "The tingling is beginning to burn against your skin. No. No. No."
+    thought "You jump to your feet, the liquid sloshing around you." with sshake
+    thought "It comes up to just below your knees, {nw}"
+    play sound "footstepssquishyv2.ogg"
+    thought "It comes up to just below your knees, {fast}and you awkwardly run until your hands smack up against a wall that feels springy and wet."
+    thought "You feel for a handhold, a dip, anything you could grab to climb up."
+    thought "There’s nothing."
+    thought "No. No. No."
+    thought "The burning is getting worse.  How did you get into this position? You should’ve turned back while you could. You should’ve never come to this cave in the first place. You begin to cry."
+    jump Ending11
+
+label Ending11:
+    scene bg blacksquare
+    show nobodyDied
+    window hide
+    pause
+    thought "Claire falls into an inescapable pit within Hellmouth caves. She is consumed by some strange liquid. The fate of Robbie, Rey and Chance is unknown."
+    return
