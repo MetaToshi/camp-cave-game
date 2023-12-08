@@ -1364,7 +1364,7 @@ label StayWithRey:
     stop sound
     jump Ending8
 label Ending8:
-    scene bg everybodydied
+    scene bg everybodyDied
     window hide
     pause
     thought "Claire was able to find her “friends” in the depths of Hellmouth. She leaves with “Robbie”, “Rey” and “Chance”."
