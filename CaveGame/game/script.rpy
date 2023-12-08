@@ -118,6 +118,7 @@ default SepPartyRoomVar = 0
 default callout = 0
 default SepStayVar = 0
 default bottle = 0
+default corkscrewstom = 0
 
 
 screen inventory:
@@ -2202,6 +2203,7 @@ label Corkscrew2:
     thought "You go to take another reassuring breath in to find that not only does the organic wall not move, but rather it begins to press in on you. You need to…"
     menu:
         "Scream for help":
+            $corkscrewstom += 1
             thought "With whatever air your lungs gather, a cry that can be considered a scream{nw}"
             play sound "celinescream.ogg"
             thought "With whatever air your lungs gather, a cry that can be considered a scream{fast} pours out of your mouth."
@@ -2223,6 +2225,7 @@ label Corkscrew2:
             thought "However, you do not lose grip of the mass. With a pull, the organic walls begin to shift, allowing you passage down its system."
     menu:
         "Scream for help":
+            $corkscrewstom += 1
             thought "With whatever air your lungs gather, a cry that can be considered a scream pours out of your mouth."
             thought "The walls begin to tremble, closing in tighter. Your hands lose their grip on the mass as this being squeezes you in its grasp."
             thought "You feel your heart sink as the flesh-like walls begin to convulse around your body, pushing you down through its system."
