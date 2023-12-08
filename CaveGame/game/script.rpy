@@ -108,6 +108,7 @@ default chanceroom = 0
 default Mimic = 0
 default trashcounter = 0
 default QuestionChance = 0
+default chosen_menu_choices = []
 
 screen inventory:
     zorder 90
@@ -444,17 +445,28 @@ label StayTogether:
     claire "I think it's best if we stay together."
     chance "Fine, but which way should we go?"
     jump Paths
+
+label GoBackExplore:
+    thought "You find yourself back at the crossroads from before."
+    thought "You look down the three branching tunnels, wondering where to go next."
+    jump Paths
+
 label Paths:
     thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
     thought "To the right, you feel a strange sort of hum vibrate the bottom of your feet. It reverberates off the walls with a subtle noise. How curious–what could that be?"
     thought "Straight ahead is the largest opening, an entrance wide enough to walk into without a necessity to squeeze."
     menu:
+        set chosen_menu_choices
         "Left, toward the sound.":
             jump StayTogetherLeft
         "Right, toward the vibration.":
             jump StayTogetherRight
         "Straight ahead, toward the large tunnel entrance.":
             jump StayTogetherMid
+    thought "The unsettling feeling of this isolation begins to settle in, and you realize it’s probably time to meet up with the others, anyway."
+    menu:
+        "You turn and start to make your way back to the rendezvous point.":
+            jump RendezvousPoint
 label StayTogetherLeft:
     claire "I wonder where all that wind is coming from."
     hide Rey_N_Default
@@ -477,6 +489,33 @@ label StayTogetherMid:
     robbie "Not having to squeeze into one of the others sounds good, yeah."
     scene bg blacksquare with fade
     jump PartyRoom
+
+'''label RendezvousPoint:
+    thought "You finally make it back to the rendezvous point."
+    thought "An empty, silent cavern greets you. Where were the others?"
+    thought "You cast your flashlight beam around the space, but see nothing except stone walls and stalagmites."
+    thought "Shifting uneasily, you bite your lip. This whole thing just isn’t sitting right with you."
+    thought "Something about this cave leaves you feeling unsettled , in more ways than one."
+    thought "Maybe it was time to get the hell out of this place."
+
+    menu:
+        "Leave the Cave":
+            jump LeaveCave
+
+label LeaveCave:
+    thought "You can’t take this place anymore."
+    thought "You turn to make your way back through the passages and rooms, ignoring the jab of guilt at leaving your friends behind in the cave."
+    thought "They should be fine–they were probably all together somewhere down there."
+    thought "Sooner or later they would reach the same conclusion you did and leave."
+    thought "You climb until you see the faint rays of daylight from the mouth of the cave."
+
+label ENDING4:
+
+    # Ending Screen: Show outside cave entrance, no sprites.
+    scene bg cavetitlescreen
+    thought "ENDING 4  - Claire is separated from Robbie, Rey and Chance within Hellmouth caves. Spooked by the strange atmosphere of the caves, Claire leaves by herself."
+    thought "What happens to Robbie, Rey and Chance is unknown." '''
+
 
 label Lungs:
     scene bg tightsqueezeflip with fade
@@ -1330,7 +1369,7 @@ label GoWithRobbie:
     menu:
         "Go into the small passage.":
             thought "You lead the way into the smaller passage."
-            jump WombAlt
+            jump NotReyAlt
         "Go into the larger passage.":
             thought "You step into the larger passage."
             jump Ending3
@@ -1378,7 +1417,7 @@ label Ending3:
     window hide
     pause
     thought "Claire was able to find Chance, and left Hellmouth caves with him, as well as Robbie and Rey."
-label WombAlt:
+label NotReyAlt:
     hide Robbie_N_Default
     hide Rey_N_Default
     scene bg tightsqueezeflip
@@ -2050,7 +2089,7 @@ label Corkscrew2:
                 thought "The air sucked in by a deep breath is all released at once as you cry out for help, but your heart sinks at the sound of your voice echoing back at you. "
                 thought "There’s not enough agency in the space in order to move your head up, but staining your eyes far enough allows you to see that the entryway has been closed off."
                 thought "Not by rock, however, but rather by a convulsing substance that tries to deceive your vision into believing that it is a rock formation."
-                callout += 1
+                # callout += 1
                 jump Corkscrew2
             "Continue climbing":
                 thought "You reach for the next available area to grab ahold of, but your hand retracts with a moist substance."
@@ -2072,6 +2111,68 @@ label Corkscrew2:
             thought "You feel your heart sink as the flesh-like walls begin to convulse around your body, pushing you down through its system."
             thought "Centimeter by centimeter…"
             thought "Then inch by inch…"
-            thought "Then foot by foot… this place begins to swallow you."
-            thought ""
+            thought "Then feet by feet…"
+            thought "this place begins to swallow you."
+            jump Stomach
         "Climb":
+            thought "You continue to climb down, allowing your breathing to become a rhythmic pattern to keep your sanity afloat."
+            thought "Breathe in. Breathe out."
+            thought "Your lungs feel heavy in your chest as you feel them expand and contract mechanically to avoid hyperventilation. "
+            thought "You reach for another ledge but find your hand wrapped around a mass of the organic substance. The liquid oozes between your fingers, and the walls tremble, closing in tighter. "
+            thought "Your legs hang in freefall as this being squeezes you in its grasp, but you do not lose your grip."
+            thought "The pressure relieves a small crack in your sternum as it locks you in place."
+            thought "However, you do not lose grip of the mass. With a pull, the organic walls begin to shift, allowing you passage down its system."
+    menu:
+        "Scream for help":
+            thought "With whatever air your lungs gather, a cry that can be considered a scream pours out of your mouth."
+            thought "The walls begin to tremble, closing in tighter. Your hands lose their grip on the mass as this being squeezes you in its grasp."
+            thought "You feel your heart sink as the flesh-like walls begin to convulse around your body, pushing you down through its system."
+            thought "Centimeter by centimeter…"
+            thought "then inch by inch…"
+            thought "then feet by feet…"
+            thought "This place begins to swallow you."
+            jump Stomach
+        "Climb":
+            thought "Breathe."
+            thought "Even if the walls press against your torso in a way that restricts the inflation of your chest, you must keep these shallow breaths consistent."
+            thought "Grabbing another mass, you curl your fingers and dig into it."
+            thought "The liquid has now not only soaked your hand but drips down your sleeve as the rest of the walls begin to soak your clothes in the same warm substance."
+            thought "In one strong tug, you continue to pull yourself through this being’s body. In the corner of your eye, you see an opening."
+            thought "The desperation to get out encompasses you, pleading for you to panic."
+            thought "But you won’t."
+            thought "Breathe. Breathe. Breathe."
+            thought "You grab a hold of a mass and, in one last dug, get closer to the opening."
+            thought "Your arm reaches through it, feeling the open space on the other side."
+            jump Mimic
+
+label Womb:
+    scene bg fleshcavealt
+    thought "You shudder, and with one last burst of strength, you lurch your body forward and tumble from the tunnel, landing in a heap on the ground."
+    thought "You look up and nearly jump straight out of your skin."
+    thought "Rey is standing in the center of the room, watching you quietly."
+    Claire "Rey? What-what are you doing here?"
+    thought "She stares right through you, only looking up and meeting your eyes when you walk closer."
+    Claire "Rey? What are you-"
+    Not Rey "Oh, hello."
+    thought "Her voice sounds somber, almost tired, like she had just finished crying."
+    Claire "Hi? C’mon Rey, stop acting weird, why are you down here?"
+    thought "As you ask her again, she offers what seems like a forced smile and continues. "
+    Not Rey "I was looking for you, and the rest of our group. Not sure how I got here…"
+    Claire "Ah, yeah me too…"
+    Claire "I wonder if Chance and Robbie are lost too, or if they’re looking for us."
+    thought "Rey stares at you, blankly."
+    Claire "Um… so, do you want to try to find a way out? Maybe if we-"
+    Not Rey "Mm, follow me."
+    Claire "Oh do you know a way ou–hey! Rey?"
+    thought "She runs off, making no attempt to check on you before doing so."
+    Claire "Hey, slow down! Rey!"
+    thought "If she hears you, she does not respond."
+    thought "The two of you go deeper into the cave, passing by a few different tunnels and narrow rooms, all of which she avoids."
+    Claire "Hey uh, are you sure this is the right way?"
+    Not Rey "…"
+    thought "The walls feel like they’re closing in, and each step you take progressively sounds moister than the last."
+    thought "You watch as Rey pushes past a curtain of some thin, flesh-looking substance, red liquid staining her hands."
+    thought "She turns around and looks at you as a thick droplet of it lands on her face, but instead of freaking out, she stays completely silent and motionless."
+    Claire "Rey, can you at least tell me where we’re going?"
+    Not Rey "We’re heading out."
+    thought "She steps close to a passage that’s lower to the ground, looks back at you, and walks into it."
