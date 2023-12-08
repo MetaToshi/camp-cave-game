@@ -665,11 +665,12 @@ label PlayAlong:
     hide Rey_N_Speechless
     show Rey_N_Nervous at r
     rey "And I- oh. Wait what?"
-    play sound "guyscream.ogg"
     robbie "I don't see him here. Maybe he's hiding?"
     thought "You frown. Chance did like to join Robbie’s pranks; maybe he ran off as a joke? But you didn’t hear any footsteps or anything."
 label PlayAlong2:
-    thought "You open your mouth to suggest-"
+    thought "You open your mouth to sug{nw}"
+    play sound "guyscream.ogg"
+    thought "You open your mouth to sug{fast}gest-"
     hide Robbie_N_Question
     show Robbie_N_Awkward at l
     thought "All of you freeze."
@@ -1838,7 +1839,7 @@ label SepPaths:
         if SepHeartVar == 1:
             if SepPartyRoomVar == 1:
                 thought "The unsettling feeling of this isolation begins to settle in,  and you realize it’s probably time to meet up with the others, anyway. You turn and start to make your way back to the rendezvous point."
-                jump SepRendezvousPoint
+                jump RendezvousPoint
     if SepLungsVar == 0:
         if SepHeartVar == 1:
             if SepPartyRoomVar == 0:
@@ -1861,7 +1862,7 @@ label SepPaths:
                         jump SepPartyRoom
 
 label SepLungs:
-    $SepLungsVar = 1
+    $SepLungsVar += 1
     scene bg tightsqueeze
     thought "You turn sideways to shuffle through the narrow passageway. The wind from the other side is cold, leaving goosebumps wherever it can find bare skin."
     thought "It lightly pushes against you and your friends but gets stronger the closer you get."
@@ -1884,7 +1885,7 @@ label SepLungs:
         "Go back.":
             jump SepGoBackExplore
 label SepPartyRoom:
-    $SepPartyRoomVar = 1
+    $SepPartyRoomVar += 1
     scene bg tightsqueezeflip
     thought "You turn sideways to shuffle through the narrow passageway, feeling the rock cling to your back."
     play sound "rocksfallingv2.ogg"
@@ -1908,7 +1909,7 @@ label SepPartyRoom:
                     thought "You turn away."
                     jump SepGoBackExplore
 label SepHeart:
-    $SepHeartVar = 1
+    $SepHeartVar += 1
     scene bg tightsqueeze
     thought "You squeeze into the narrow passageway, the walls scratching against whatever bare skin it can find. Breathing in is taxing, as you feel your expanded stomach push against the front wall."
     play sound "mediumheartbeatv2.ogg" loop
@@ -1999,3 +2000,78 @@ label smally:
     scene bg partyroomempty
     "You find yourself back at the crossroads from before. You look down the three branching tunnels, wondering where to go next."
     jump SepPaths
+
+label RendezvousPoint:
+    play sound "echofootsteps.ogg"
+    scene bg partyroomempty with dissolve
+    thought "You finally make it back to the rendezvous point. An empty, silent cavern greets you."
+    thought "Where were the others? You cast your flashlight beam around the space, but see nothing except stone walls and stalagmites."
+    thought "Shifting uneasily, you bite your lip. This whole thing just isn’t sitting right with you."
+    thought "Something about this cave leaves you feeling unsettled , in more ways than one. Maybe it was time to get the hell out of this place."
+    menu:
+        "Leave the cave.":
+            play sound "echofootsteps.ogg" fadeout 0.5
+            thought "You can’t take this place anymore. You turn to make your way back through the passages and rooms, ignoring the jab of guilt at leaving your friends behind in the cave."
+            play sound "footstepsnormal.ogg" fadein 0.5
+            thought "They should be fine–they were probably all together somewhere down there. Sooner or later they would reach the same conclusion you did and leave."
+            thought "You climb until you see the faint rays of daylight from the mouth of the cave."
+            jump Ending4
+        "Go looking for your friends":
+            thought "You can’t leave your friends behind. But sitting alone in the cavern is sending shivers down your spine."
+            thought "But where were they?"
+            thought "Suddenly, you hear something. Was that….your name? You listen."
+            thought "You could’ve sworn you heard something, and as you shine your light through the branching paths, you notice something you didn’t before; another passage."
+            thought "This one has a narrow mouth, barely bigger than a bowling ball. You have  a thin build; chances are you could probably fit."
+            thought "You could see from the entrance a bit, and you notice the tunnel sharply twists less than a few feet inside–almost like a corkscrew. You swallow."
+            claire "Hello??? Is anyone else there?"
+            claire "Chance? Robbie? Rey? Anyone?"
+            rey "Hey! I’m"
+            chance "Over here, come"
+            robbie "This way!"
+            jump Corkscrew
+label Ending4:
+    scene bg cavetitlescreen
+    thought "Claire is separated from Robbie, Rey and Chance within Hellmouth caves. Spooked by the strange atmosphere of the caves, Claire leaves by herself."
+    thought "What happens to Robbie, Rey and Chance is unknown."
+
+label Corkscrew:
+    scene bg fleshcavealt2
+    thought "Sucking in your stomach, you squeeze yourself into the corkscrew, inching down with staggered movements."
+    thought "The jagged edges of the rock pull at your shirt until all you can see is the stone in front of you and the glaring light of your phone."
+    thought "As you proceed down, the rock walls on your back and stomach tighten until breathing no longer feels like second nature, but you must remain calm."
+    thought "Is the passage getting looser? No, the wall pressing against your back is as close as before, though there is some elasticity in the material."
+    thought "Instead of the sharp rocks grabbing hold of your body, you feel it begin to organically mold to your shape."
+    thought "You take a deep breath, allowing your stomach to expand in the tight space, but the wall in front begins to move with you as well. "
+    jump Corkscrew2
+label Corkscrew2:
+    if callout == 0:
+        menu:
+            "Call out for help":
+                thought "The air sucked in by a deep breath is all released at once as you cry out for help, but your heart sinks at the sound of your voice echoing back at you. "
+                thought "There’s not enough agency in the space in order to move your head up, but staining your eyes far enough allows you to see that the entryway has been closed off."
+                thought "Not by rock, however, but rather by a convulsing substance that tries to deceive your vision into believing that it is a rock formation."
+                callout += 1
+                jump Corkscrew2
+            "Continue climbing":
+                thought "You reach for the next available area to grab ahold of, but your hand retracts with a moist substance."
+    if callout == 1:
+        menu:
+            "Continue climbing":
+                thought "You reach for the next available area to grab ahold of, but your hand retracts with a moist substance."
+                thought "The convulsing nature of the walls around you allows the ability to conclude what your mind can't seem to comprehend."
+    thought "This is blood."
+    thought "Stay calm. Stay calm. Stay calm."
+    thought "You go to take another reassuring breath in to find that not only does the organic wall not move, but rather it begins to press in on you. You need to…"
+    menu:
+        "Scream for help":
+            thought "With whatever air your lungs gather, a cry that can be considered a scream{nw}"
+            play sound "celinescream.ogg"
+            thought "With whatever air your lungs gather, a cry that can be considered a scream{fast} pours out of your mouth."
+            thought "The walls begin to tremble, closing in tighter. Your hands lose their grip on the ledges, and your legs hang in freefall as this being squeezes you in its grasp."
+            thought "The pressure relieves a small crack in your sternum as it locks you in place."
+            thought "You feel your heart sink as the flesh-like walls begin to convulse around your body, pushing you down through its system."
+            thought "Centimeter by centimeter…"
+            thought "Then inch by inch…"
+            thought "Then foot by foot… this place begins to swallow you."
+            thought ""
+        "Climb":

@@ -298,7 +298,7 @@ screen navigation():
 
         if main_menu:
 #STARTBUTTON
-            textbutton _("     ") action Start()
+            textbutton _("Start") action Start()
 
         else:
 #HISTORYBUTTON
@@ -307,7 +307,7 @@ screen navigation():
             textbutton _("Save") action ShowMenu("save")
 #PREFERENCESBUTTON
         if main_menu:
-            textbutton _("     ") action ShowMenu("preferences")
+            textbutton _("Preferences") action ShowMenu("preferences")
         elif not main_menu:
             textbutton _("Preferences") action ShowMenu("preferences")
 
@@ -320,21 +320,21 @@ screen navigation():
             textbutton _("Main Menu") action MainMenu()
 #ABOUT BUTTON
         if main_menu:
-            textbutton _("     ") action ShowMenu("about")
+            textbutton _("About") action ShowMenu("about")
         elif not main_menu:
             textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 #HELPBUTTON
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("     ") action ShowMenu("help")
+            textbutton _("Help") action ShowMenu("help")
 
         if renpy.variant("pc"):
             if main_menu:
 #QUITBUTTON
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-                textbutton _("     ") action Quit(confirm=not main_menu)
+                textbutton _("Quit") action Quit(confirm=not main_menu)
             elif not main_menu:
                 textbutton _("Quit") action Quit(confirm=not main_menu)
 
