@@ -117,6 +117,7 @@ default SepHeartVar = 0
 default SepPartyRoomVar = 0
 default callout = 0
 default SepStayVar = 0
+default bottle = 0
 
 
 screen inventory:
@@ -490,6 +491,13 @@ label Paths:
                         "Straight ahead, toward the large tunnel entrance.":
                             jump StayTogetherMid
     if goleft == 1:
+        if goright == 0:
+            if gomid == 1:
+                    thought "To the right, you feel a strange sort of hum vibrate the bottom of your feet. It reverberates off the walls with a subtle noise. How curious–what could that be?"
+                    menu:
+                        "Right, toward the vibration.":
+                            jump StayTogetherRight 
+    if goleft == 1:
         if goright == 1:
             if gomid == 0:
                     thought "Straight ahead is the largest opening, an entrance wide enough to walk into without a necessity to squeeze."
@@ -745,7 +753,7 @@ label TurnItOn:
     show Rey_N_Nervous at l
     rey "Look, I’m fine with exploring, but no one said we have to do it in the dark."
     hide Chance_N_Question
-    show Chance_N_Default
+    show Chance_N_Default at r
     chance "Aw come on Rey, it was just a little joke."
     rey "..."
     claire "....okay, come on. Let's keep exploring."
@@ -1653,7 +1661,7 @@ label QuestioningChance:
                     jump Ending5
 
 label Ending5:
-    scene cavealt
+    scene bg cavealt
     show rey n nervous r
     show chance m default m
     show robbie n question l
@@ -1932,6 +1940,8 @@ label Separate:
 label SepGoBackExplore:
     scene bg partyroomempty
     thought "You find yourself back at the crossroads from before."
+    jump SepPaths
+
 label SepPaths:
     scene bg partyroomempty
     thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
@@ -1970,8 +1980,8 @@ label SepPaths:
         if SepHeartVar == 1:
             if SepPartyRoomVar == 0:
                 menu:
-                    "Right, toward the vibration.":
-                        jump SepHeart
+                    "Left, toward the sound.":
+                        jump SepLungs
                     "Straight ahead, toward the large tunnel entrance.":
                         jump SepPartyRoom
     if SepLungsVar == 0:
@@ -1984,8 +1994,10 @@ label SepPaths:
         if SepHeartVar == 0:
             if SepPartyRoomVar == 1:
                 menu:
-                    "Straight ahead, toward the large tunnel entrance.":
-                        jump SepPartyRoom
+                    "Left, toward the sound.":
+                        jump SepLungs
+                    "Right, toward the vibration.":
+                        jump SepHeart
 
 label SepLungs:
     $SepLungsVar += 1
