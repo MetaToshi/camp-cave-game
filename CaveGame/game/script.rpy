@@ -1905,6 +1905,7 @@ label Scream:
     thought "The feeling of your flesh being rendered to shreds or the feeling of your torso going cold from your blood splattering across the floor is nowhere near as horrifying as watching the creature reach for its own face."
     thought "In the last moments of your consciousness, you watch as it begins to dig into its own flesh and peel off the previously stolen face. It looks at you, and begins to reach for yours."
     jump Ending7
+
 label Ending10:
     scene bg cavetitlescreen
     show Rey_N_Smile at l
@@ -2331,11 +2332,13 @@ label SafeZone:
     claire"AH"
     show Rey_N_Nervous at r
     show Robbie_N_Default at l
+    show Chance_N_Default at m
     claire "Oh my god! There you are, we were worried about you!"
     hide Rey_N_Nervous
     show Rey_N_Default at r
     rey "Claire!!! Oh my god you made it! Where were you?! We were all waiting here and I was worried sick and we didn’t know if you got lost or-"
-    robbie "It’s just me and Rey right now, Chance is still out exploring."
+    claire "Hey, hey I’m okay! Is everyone here?"
+    robbie "Yup! All accounted for, no more, no less."
     if notreyvar == 1:
         claire"Wait… Rey? I thought you were…"
         rey "Hm? Thought I was what?"
@@ -2350,33 +2353,56 @@ label SafeZone:
         thought "Your friends stand around awkwardly, a bit of tension in the air as all of you try to understand what happened, before moving on."
     claire"How did you guys get here? This cave is so weird, I was worried I wouldn’t be able to find you all."
     hide Rey_N_Nervous 
-    show Rey_N_Smile
+    show Rey_N_Smile at r
+    hide Chance_N_Default
+    show Chance_N_Happy at m
+    chance "I just trusted my gut! I kept following all the less weird tunnels and I found this room eventually!"
     rey "Mm, I definitely got lost for a while… and I was hearing all these weird noises, but eventually I ran into Robbie! Definitely a sight for sore eyes!"
     claire"How about you, Robbie? How was your solo adventure?"
     hide Robbie_N_Default
-    show Robbie_N_Awkward
+    show Robbie_N_Awkward at l 
     thought "Robbie's face goes white."
     robbie "Oh uh- hah I-"
-    claire"...are you okay?"
-    robbie "So funny story… I uh, thought I had {i}already{/i} ran into you guys. I ran into Claire- or someone I thought was Claire, but you–I mean, {i}she{/i}, was acting REALLY weird. She never laughed? Or breathed, I think?"
+    hide Chance_N_Happy
+    show Chance_N_Nervous at m
+    chance "Robbie? You good dude?"
+    robbie "So funny story… I uh, thought I had already ran into you guys. I ran into Claire- or someone I thought was Claire, but you–"
+    robbie "I mean, she, was acting REALLY weird. She never laughed? Or breathed, I think?"
     hide Rey_N_Smile
-    show Rey_N_Nervous
+    show Rey_N_Nervous at r
     claire"Robbie…this is the first time I’ve seen you since we separated to explore."
-    robbie "Then who the hell was {i}that{/i}?? She looked almost identical to you! I heard the rest of you guys nearby, talking and laughing and–and I thought I was safe, I thought we were all okay, but she just kept {i}looking{/i} at me and-"
-    claire"You’re okay, alright? We’re all here and we’re all ourselves. Normal."
+    robbie "Then who the hell was that?? She looked almost identical to you! I heard the rest of you guys nearby, talking and laughing and-"
+    robbie "and I thought I was safe, I thought we were all okay, but she just kept looking at me and-"
+    hide Chance_N_Nervous
+    show Chance_N_Default at m
+    chance "Hey, breathe dude."
+    claire"You’re okay, alright? We’re all here and we’re all ourselves."
+    robbie "..."
+    hide Robbie_N_Awkward
+    show Robbie_N_Default at l
     robbie "Ok, yeah. Yeah! We’re all good, sorry about that."
-    rey "We’re all okay, calm down. I think this cave is just–messing with us."
+    hide Rey_N_Nervous
+    show Rey_N_Default at r
+    rey "We’re all good, calm down. I think this cave is just–messing with us."
     claire"Yeah, we need to get out of here, and soon. This place isn’t safe to be in, and I don’t wanna think about what could happen if we stay any longer. Something weird is going on."
     robbie "What makes you think that? The flesh walls? The fake voices? The fake {i}people{/i} or–or {i}whatever{/i} they are?"
-    claire"All of the above. This place is some horror movie shit."
+    claire"Okay we get it, we get it. Yeah. This place is some horror movie shit."
     claire"We can question what the hell is happening later, but for now, let’s just find Chance and figure out how to get out of here."
+    hide Chance_N_Default
+    show Chance_N_Nervous at m
     chance"Ah- about that."
+    hide Rey_N_Default
+    show Rey_N_Question at r
     rey "Hmm?"
     chance "When I was exploring, I thought the path would loop back around, like some other caves I’ve been in."
     chance "But…when I got to what I thought was the path back, it was covered in rubble and rocks. So that couldn’t have been it."
     robbie "No… uh. I think that is, or, was, the entrance."
     claire "What? What do you mean?"
+    hide Robbie_N_Default
+    show Robbie_N_Question at l
     robbie " I went that way too, earlier. I saw the way we came from, and I watched as something fell or like- shifted? And then the entrance was covered in rocks."
+    hide Rey_N_Question
+    show Rey_N_Nervous at r
     rey "Are we stuck here?"
     chance "Fuck, that’s. Uh. "
     rey "ARE WE STUCK HERE?"
@@ -2393,9 +2419,14 @@ label SafeZone:
             jump Reason
 
 label Flee:
+    scene bg blacksquare with dissolve
+    scene bg partyroomempty
     thought "Together, you swiftly make your way back to the mouth of the cave system. Or…what you remembered to be the mouth."
     thought "Chance was right."
     thought "All that is in front of you now was a large rock, jammed into the space that would’ve been the entrance. And your only exit."
+    show Rey_N_Nervous at l
+    show Chance_N_Nervous at m
+    show Robbie_N_Awkward at r
     claire "What the fuck."
     robbie "Did we go the right way? This has to be it, right?"
     chance "It is, I made sure."
@@ -2403,6 +2434,7 @@ label Flee:
     claire "Uh, no we- there’s some way out."
     robbie "This fucking cave…"
     rey "We should’ve never come here!"
+    show Chance_N_Scared at m
     chance "God- are we…stuck?"
     rey "Oh god. We’re stuck here."
     claire "Everyone, stay calm, there’s. Something. Something we can do."
@@ -2418,7 +2450,7 @@ label Ending12:
     thought "Upon trying to flee the caves, they discover the only known exit is unexplainably blocked. All four friends remain trapped inside the cave."
 
 label Reason:
-    thought "still finishing..."
+    thought "still finishing..."git
 
 label Stomach:
     scene bg fleshcavealt1
