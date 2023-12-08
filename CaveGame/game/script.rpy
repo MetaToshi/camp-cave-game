@@ -119,6 +119,7 @@ default callout = 0
 default SepStayVar = 0
 default bottle = 0
 default corkscrewstom = 0
+default notreyvar = 0
 
 
 screen inventory:
@@ -1269,6 +1270,7 @@ label LookForChance:
             hide Robbie_N_Awkward
             show Robbie_N_Default at r
             robbie "No, it’s okay! Get some rest, and I’ll go ahead to look for Chance."
+            hide Robbie_N_Default
             jump StayWithRey
         "Go with Robbie.":
             claire "Rey, if it’s alright I think I’ll go ahead with Robbie."
@@ -1299,7 +1301,7 @@ label StayWithRey:
     robbie "I need your help. I can’t get him alone. "
     claire "Ah, we can wait for a bit, until Rey feels better maybe?"
     rey "Yeah, my ankle’s doing a bit better, I could walk on it in a few minutes, maybe-"
-    hide Robbie_N_Smile
+    hide Robbie_M_Smile
     show Robbie_M_Default at l
     robbie "There’s no time! We- Claire and I should go. "
     claire "O-oh, you sure?"
@@ -1374,7 +1376,7 @@ label StayWithRey:
     stop sound
     jump Ending8
 label Ending8:
-    scene bg everybodyDied
+    show everybodydied
     window hide
     pause
     thought "Claire was able to find her “friends” in the depths of Hellmouth. She leaves with “Robbie”, “Rey” and “Chance”."
@@ -1854,6 +1856,7 @@ label MimicMayhem:
         menu:
             "Scream for help.":
                 thought "You scream for help, pleading for someone, anyone to come save you."
+                jump Scream
             "Fight":
                 jump Fight
 label Fight:
@@ -1878,6 +1881,7 @@ label Fight:
         menu:
             "Scream for help.":
                 thought "You scream for help, pleading for someone, anyone to come save you."
+                jump Scream
             "Fight":
                 jump FightFake
 label FightFake:
@@ -1889,6 +1893,7 @@ label FightFake:
     stranger "“Doing…?” it says in your voice"
     thought "You beg for something to be in here to come to help you. The bag begins to rapidly ruffle as you desperately try to find something!! Anything!!"
     jump Scream
+
 label Scream:
     thought "You hear the gutteral sound of blades digging into organs. It is only when your stomach runs cold that you realize what happened."
     thought "You can’t look down though. No, your eyes are locked into the ones behind the stolen flesh. It yanks the claws out of your intestines, allowing you to stagger backwards to the wall."
@@ -1960,6 +1965,12 @@ label SepPaths:
                         jump SepPartyRoom
     if SepLungsVar == 1:
         if SepHeartVar == 0:
+            if SepPartyRoomVar == 1:
+                menu:
+                    "Right, toward the vibration.":
+                        jump SepHeart
+    if SepLungsVar == 1:
+        if SepHeartVar == 0:
             if SepPartyRoomVar == 0:
                 menu:
                     "Right, toward the vibration.":
@@ -1999,6 +2010,18 @@ label SepPaths:
                         jump SepLungs
                     "Right, toward the vibration.":
                         jump SepHeart
+    else:
+        if SepLungsVar == 0:
+            if SepHeartVar == 0:
+                if SepPartyRoomVar == 0:
+                    menu:
+                        "Left, toward the sound.":
+                            jump SepLungs
+                        "Right, toward the vibration.":
+                            jump SepHeart
+                        "Straight ahead, toward the large tunnel entrance.":
+                            jump SepPartyRoom
+
 
 label SepLungs:
     $SepLungsVar += 1
@@ -2248,6 +2271,7 @@ label Corkscrew2:
             jump Womb
 
 label Womb:
+    notreyvar += 1
     scene bg fleshhole
     thought "You shudder, and with one last burst of strength, you lurch your body forward and tumble from the tunnel, landing in a heap on the ground."
     thought "You look up and nearly jump straight out of your skin."
@@ -2303,7 +2327,99 @@ label Womb:
             jump SafeZone
 
 label SafeZone:
-        claire "lmao"
+    scene bg cave
+    claire"AH"
+    show Rey_N_Nervous at r
+    show Robbie_N_Default at l
+    claire "Oh my god! There you are, we were worried about you!"
+    hide Rey_N_Nervous
+    show Rey_N_Default at r
+    rey "Claire!!! Oh my god you made it! Where were you?! We were all waiting here and I was worried sick and we didn’t know if you got lost or-"
+    robbie "It’s just me and Rey right now, Chance is still out exploring."
+    if notreyvar == 1:
+        claire"Wait… Rey? I thought you were…"
+        rey "Hm? Thought I was what?"
+        claire"You were ahead of me- and you were acting all weird and stuff and-"
+        hide Rey_N_Default at r
+        show Rey_N_Nervous at r
+        thought "Rey looks confused, and shakes her head at you while looking concerned."
+        rey "Claire I’ve been here for a while, Robbie can attest to that."
+        thought "You mention everything you saw with Rey in the other room, and at the mention of the bloodied hands, Rey raises hers. Clean, other than a few scrapes."
+        rey "Look, I’m all good."
+        claire"Who...or what, did I follow then, I–"
+        thought "Your friends stand around awkwardly, a bit of tension in the air as all of you try to understand what happened, before moving on."
+    claire"How did you guys get here? This cave is so weird, I was worried I wouldn’t be able to find you all."
+    hide Rey_N_Nervous 
+    show Rey_N_Smile
+    rey "Mm, I definitely got lost for a while… and I was hearing all these weird noises, but eventually I ran into Robbie! Definitely a sight for sore eyes!"
+    claire"How about you, Robbie? How was your solo adventure?"
+    hide Robbie_N_Default
+    show Robbie_N_Awkward
+    thought "Robbie's face goes white."
+    robbie "Oh uh- hah I-"
+    claire"...are you okay?"
+    robbie "So funny story… I uh, thought I had {i}already{/i} ran into you guys. I ran into Claire- or someone I thought was Claire, but you–I mean, {i}she{/i}, was acting REALLY weird. She never laughed? Or breathed, I think?"
+    hide Rey_N_Smile
+    show Rey_N_Nervous
+    claire"Robbie…this is the first time I’ve seen you since we separated to explore."
+    robbie "Then who the hell was {i}that{/i}?? She looked almost identical to you! I heard the rest of you guys nearby, talking and laughing and–and I thought I was safe, I thought we were all okay, but she just kept {i}looking{/i} at me and-"
+    claire"You’re okay, alright? We’re all here and we’re all ourselves. Normal."
+    robbie "Ok, yeah. Yeah! We’re all good, sorry about that."
+    rey "We’re all okay, calm down. I think this cave is just–messing with us."
+    claire"Yeah, we need to get out of here, and soon. This place isn’t safe to be in, and I don’t wanna think about what could happen if we stay any longer. Something weird is going on."
+    robbie "What makes you think that? The flesh walls? The fake voices? The fake {i}people{/i} or–or {i}whatever{/i} they are?"
+    claire"All of the above. This place is some horror movie shit."
+    claire"We can question what the hell is happening later, but for now, let’s just find Chance and figure out how to get out of here."
+    chance"Ah- about that."
+    rey "Hmm?"
+    chance "When I was exploring, I thought the path would loop back around, like some other caves I’ve been in."
+    chance "But…when I got to what I thought was the path back, it was covered in rubble and rocks. So that couldn’t have been it."
+    robbie "No… uh. I think that is, or, was, the entrance."
+    claire "What? What do you mean?"
+    robbie " I went that way too, earlier. I saw the way we came from, and I watched as something fell or like- shifted? And then the entrance was covered in rocks."
+    rey "Are we stuck here?"
+    chance "Fuck, that’s. Uh. "
+    rey "ARE WE STUCK HERE?"
+    robbie "I-I don’t know. We could go check? Maybe I was wrong? "
+    chance "There has to be some way out. There has to be. "
+    rey "What should we do?"
+    menu:
+        "Flee":
+            claire "Let's get out."
+            chance "And if the route is blocked off?"
+            claire "…Let’s just hope it isn’t."
+            jump Flee
+        "Reason":
+            jump Reason
+
+label Flee:
+    thought "Together, you swiftly make your way back to the mouth of the cave system. Or…what you remembered to be the mouth."
+    thought "Chance was right."
+    thought "All that is in front of you now was a large rock, jammed into the space that would’ve been the entrance. And your only exit."
+    claire "What the fuck."
+    robbie "Did we go the right way? This has to be it, right?"
+    chance "It is, I made sure."
+    rey "There’s no way a cave-in could’ve happened, right? We would’ve heard it!"
+    claire "Uh, no we- there’s some way out."
+    robbie "This fucking cave…"
+    rey "We should’ve never come here!"
+    chance "God- are we…stuck?"
+    rey "Oh god. We’re stuck here."
+    claire "Everyone, stay calm, there’s. Something. Something we can do."
+    thought "There’s no way we’re just trapped here."
+    thought "Right?"
+    jump Ending12:
+
+label Ending12:
+    show everybodydied
+    window hide
+    pause
+    thought "Claire is reunited with Chance, Rey and Robbie within Hellmouth caves."
+    thought "Upon trying to flee the caves, they discover the only known exit is unexplainably blocked. All four friends remain trapped inside the cave."
+
+label Reason:
+    thought "still finishing..."
+
 label Stomach:
     scene bg fleshcavealt1
     if corkscrewstom == 0:
@@ -2327,7 +2443,7 @@ label Stomach:
     if corkscrewstom == 0:
         menu:
             "Go back":
-                jump BackTrack
+                jump Backtrack
 # if corkscrewstom == 1:
 label Backtrack:
     scene bg cave
