@@ -115,7 +115,7 @@ default gomid = 0
 default SepLungsVar = 0
 default SepHeartVar = 0
 default SepPartyRoomVar = 0
-default callout
+default callout = 0
 
 
 screen inventory:
