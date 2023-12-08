@@ -2272,7 +2272,7 @@ label Corkscrew2:
             jump Womb
 
 label Womb:
-    notreyvar += 1
+    $notreyvar += 1
     scene bg fleshhole
     thought "You shudder, and with one last burst of strength, you lurch your body forward and tumble from the tunnel, landing in a heap on the ground."
     thought "You look up and nearly jump straight out of your skin."
@@ -2440,7 +2440,7 @@ label Flee:
     claire "Everyone, stay calm, there’s. Something. Something we can do."
     thought "There’s no way we’re just trapped here."
     thought "Right?"
-    jump Ending12:
+    jump Ending12
 
 label Ending12:
     show everybodydied
@@ -2450,7 +2450,7 @@ label Ending12:
     thought "Upon trying to flee the caves, they discover the only known exit is unexplainably blocked. All four friends remain trapped inside the cave."
 
 label Reason:
-    thought "still finishing..."git
+    thought "still finishing..."
 
 label Stomach:
     scene bg fleshcavealt1
