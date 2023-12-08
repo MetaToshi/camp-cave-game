@@ -112,7 +112,10 @@ default chosen_menu_choices = []
 default goleft = 0
 default goright = 0
 default gomid = 0
-
+default SepLungsVar = 0
+default SepHeartVar = 0
+default SepPartyRoomVar = 0
+default callout
 
 
 screen inventory:
@@ -2228,30 +2231,33 @@ label Womb:
     scene bg fleshcavealt
     thought "You shudder, and with one last burst of strength, you lurch your body forward and tumble from the tunnel, landing in a heap on the ground."
     thought "You look up and nearly jump straight out of your skin."
+    show Rey_M_Default at m
     thought "Rey is standing in the center of the room, watching you quietly."
     claire "Rey? What-what are you doing here?"
     thought "She stares right through you, only looking up and meeting your eyes when you walk closer."
     claire "Rey? What are you-"
-    Not Rey "Oh, hello."
+    notrey "Oh, hello."
     thought "Her voice sounds somber, almost tired, like she had just finished crying."
     claire "Hi? C’mon Rey, stop acting weird, why are you down here?"
+    hide Rey_M_Default
+    show Rey
     thought "As you ask her again, she offers what seems like a forced smile and continues. "
-    Not Rey "I was looking for you, and the rest of our group. Not sure how I got here…"
+    notrey "I was looking for you, and the rest of our group. Not sure how I got here…"
     claire "Ah, yeah me too…"
     claire "I wonder if Chance and Robbie are lost too, or if they’re looking for us."
     thought "Rey stares at you, blankly."
     claire "Um… so, do you want to try to find a way out? Maybe if we-"
-    Not Rey "Mm, follow me."
+    notrey "Mm, follow me."
     claire "Oh do you know a way ou–hey! Rey?"
     thought "She runs off, making no attempt to check on you before doing so."
     claire "Hey, slow down! Rey!"
     thought "If she hears you, she does not respond."
     thought "The two of you go deeper into the cave, passing by a few different tunnels and narrow rooms, all of which she avoids."
     claire "Hey uh, are you sure this is the right way?"
-    Not Rey "…"
+    notrey "…"
     thought "The walls feel like they’re closing in, and each step you take progressively sounds moister than the last."
     thought "You watch as Rey pushes past a curtain of some thin, flesh-looking substance, red liquid staining her hands."
     thought "She turns around and looks at you as a thick droplet of it lands on her face, but instead of freaking out, she stays completely silent and motionless."
     Claire "Rey, can you at least tell me where we’re going?"
-    Not Rey "We’re heading out."
+    notrey "We’re heading out."
     thought "She steps close to a passage that’s lower to the ground, looks back at you, and walks into it."
