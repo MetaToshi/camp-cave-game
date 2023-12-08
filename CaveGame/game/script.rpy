@@ -582,9 +582,9 @@ label LeaveCave:
     thought "They should be fine–they were probably all together somewhere down there."
     thought "Sooner or later they would reach the same conclusion you did and leave."
     thought "You climb until you see the faint rays of daylight from the mouth of the cave."
+    jump ENDING4
 
 label ENDING4:
-
     # Ending Screen: Show outside cave entrance, no sprites.
     scene bg cavetitlescreen
     thought "ENDING 4  - Claire is separated from Robbie, Rey and Chance within Hellmouth caves. Spooked by the strange atmosphere of the caves, Claire leaves by herself."
@@ -2245,7 +2245,7 @@ label Corkscrew2:
             jump Womb
 
 label Womb:
-    scene bg fleshcavealt1
+    scene bg fleshhole
     thought "You shudder, and with one last burst of strength, you lurch your body forward and tumble from the tunnel, landing in a heap on the ground."
     thought "You look up and nearly jump straight out of your skin."
     show Rey_M_Default at m
@@ -2269,7 +2269,7 @@ label Womb:
     notrey "Mm, follow me."
     claire "Oh do you know a way ou–hey! Rey?"
     hide Rey_M_Default
-    play sound "echofootsteps.ogg"
+    play sound "footstepssquishy.ogg"
     thought "She runs off, making no attempt to check on you before doing so."
     claire "Hey, slow down! Rey!"
     thought "If she hears you, she does not respond."
@@ -2280,9 +2280,26 @@ label Womb:
     thought "The walls feel like they’re closing in, and each step you take progressively sounds moister than the last."
     thought "You watch as Rey pushes past a curtain of some thin, flesh-looking substance, red liquid staining her hands."
     thought "She turns around and looks at you as a thick droplet of it lands on her face, but instead of freaking out, she stays completely silent and motionless."
-    Claire "Rey, can you at least tell me where we’re going?"
+    claire "Rey, can you at least tell me where we’re going?"
     notrey "We’re heading out."
     thought "She steps close to a passage that’s lower to the ground, looks back at you, and walks into it."
     menu:
         "Follow Rey":
             thought "You follow after Rey, a strange feeling in your stomach. She must have been moving fast, because you don’t catch sight of her ahead of you."
+            thought "Fifteen paces in, the ceiling starts to slant sharply downward. You crouch, and then eventually go to your hands and knees."
+            thought "The walls seem to constrict around you until you're flat on your stomach, army crawling forward."
+            thought " You regret choosing this path as you feel the back of your head knock against the low ceiling, the distance between it and the floor barely a foot in height."
+            thought "But there wasn’t any space to turn around, so you continue ahead."
+            claire "Rey? Are you there? Slow down, I don’t want to lose you."
+            jump Stomach
+        "Hesitate":
+            thought "You watch Rey crawl through the low passage, but your feet don’t move. For some reason, something doesn’t sit quite right with you."
+            thought "Before you have a chance to second guess yourself, you trust your gut and hurry forward  to slip into a tunnel off to the side."
+            thought "You hear voices up ahead, and tense for a moment." 
+            claire "Is someone there?"
+            jump SafeZone
+
+label SafeZone:
+        claire "lmao"
+label Stomach:
+        thought "yomama"
