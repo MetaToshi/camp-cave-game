@@ -109,6 +109,11 @@ default Mimic = 0
 default trashcounter = 0
 default QuestionChance = 0
 default chosen_menu_choices = []
+default goleft = 0
+default goright = 0
+default gomid = 0
+
+
 
 screen inventory:
     zorder 90
@@ -208,6 +213,7 @@ image Chance_M_Default = "Chance_M_Default.png"
 image Chance_M_Happy = "Chance_M_Happy.png"
 image Chance_M_Scared = "Chance_M_Scared.png"
 image bg splashscreen = "splashscreen.png"
+image cave = "bg cave.png"
 image cavemap = "hellmouthmap.png"
 image reydied = "reyDied.png"
 image chancedied = "chanceDied.png"
@@ -447,27 +453,81 @@ label StayTogether:
     jump Paths
 
 label GoBackExplore:
+    hide Rey_N_Speechless
+    hide Robbie_N_Awkward
+    hide Chance_N_Nervous
+    scene bg cavealt with dissolve
     thought "You find yourself back at the crossroads from before."
     thought "You look down the three branching tunnels, wondering where to go next."
     jump Paths
 
 label Paths:
-    thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
-    thought "To the right, you feel a strange sort of hum vibrate the bottom of your feet. It reverberates off the walls with a subtle noise. How curious–what could that be?"
-    thought "Straight ahead is the largest opening, an entrance wide enough to walk into without a necessity to squeeze."
-    menu:
-        set chosen_menu_choices
-        "Left, toward the sound.":
-            jump StayTogetherLeft
-        "Right, toward the vibration.":
-            jump StayTogetherRight
-        "Straight ahead, toward the large tunnel entrance.":
-            jump StayTogetherMid
-    thought "The unsettling feeling of this isolation begins to settle in, and you realize it’s probably time to meet up with the others, anyway."
-    menu:
-        "You turn and start to make your way back to the rendezvous point.":
-            jump RendezvousPoint
+    if goleft == 0:
+        if goright == 0:
+            if gomid == 0:
+                    thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
+                    thought "To the right, you feel a strange sort of hum vibrate the bottom of your feet. It reverberates off the walls with a subtle noise. How curious–what could that be?"
+                    thought "Straight ahead is the largest opening, an entrance wide enough to walk into without a necessity to squeeze."
+                    menu:
+                        "Left, toward the sound.":
+                            jump StayTogetherLeft
+                        "Right, toward the vibration.":
+                            jump StayTogetherRight
+                        "Straight ahead, toward the large tunnel entrance.":
+                            jump StayTogetherMid
+    if goleft == 1:
+        if goright == 0:
+            if gomid == 0:
+                    thought "To the right, you feel a strange sort of hum vibrate the bottom of your feet. It reverberates off the walls with a subtle noise. How curious–what could that be?"
+                    thought "Straight ahead is the largest opening, an entrance wide enough to walk into without a necessity to squeeze."
+                    menu:
+                        "Right, toward the vibration.":
+                            jump StayTogetherRight
+                        "Straight ahead, toward the large tunnel entrance.":
+                            jump StayTogetherMid
+    if goleft == 1:
+        if goright == 1:
+            if gomid == 0:
+                    thought "Straight ahead is the largest opening, an entrance wide enough to walk into without a necessity to squeeze."
+                    menu:
+                        "Straight ahead, toward the large tunnel entrance.":
+                            jump StayTogetherMid
+    if goleft == 0:
+        if goright == 1:
+            if gomid == 0:
+                    thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
+                    thought "Straight ahead is the largest opening, an entrance wide enough to walk into without a necessity to squeeze."
+                    menu:
+                        "Left, toward the sound.":
+                            jump StayTogetherLeft
+                        "Straight ahead, toward the large tunnel entrance.":
+                            jump StayTogetherMid      
+    if goleft == 0:
+        if goright == 1:
+            if gomid == 1:
+                    thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
+                    menu:
+                        "Left, toward the sound.":
+                            jump StayTogetherLeft
+    if goleft == 0:
+        if goright == 0:
+            if gomid == 1:
+                    thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
+                    thought "To the right, you feel a strange sort of hum vibrate the bottom of your feet. It reverberates off the walls with a subtle noise. How curious–what could that be?"
+                    menu:
+                        "Left, toward the sound.":
+                            jump StayTogetherLeft
+                        "Right, toward the vibration.":
+                            jump StayTogetherRight                            
+    if goleft == 1:
+        if goright == 1:
+            if gomid == 1:
+                thought "The unsettling feeling of this isolation begins to settle in, and you realize it’s probably time to meet up with the others, anyway."
+                menu:
+                    "You turn and start to make your way back to the rendezvous point.":
+                        jump RendezvousPoint
 label StayTogetherLeft:
+    $goleft += 1
     claire "I wonder where all that wind is coming from."
     hide Rey_N_Default
     show Rey_N_Smile at m
@@ -475,6 +535,7 @@ label StayTogetherLeft:
     scene bg blacksquare with fade
     jump Lungs
 label StayTogetherRight:
+    $goright += 1
     play sound "mediumheartbeat.ogg" volume 0.25 loop
     claire "What's with the vibrations from over there?"
     hide Chance_N_Default
@@ -483,6 +544,7 @@ label StayTogetherRight:
     scene bg blacksquare with fade
     jump Heart
 label StayTogetherMid:
+    $gomid += 1
     claire "How about just going straight ahead?"
     hide Robbie_N_Default
     show Robbie_N_Awkward at r
@@ -490,7 +552,7 @@ label StayTogetherMid:
     scene bg blacksquare with fade
     jump PartyRoom
 
-'''label RendezvousPoint:
+label RendezvousPoint:
     thought "You finally make it back to the rendezvous point."
     thought "An empty, silent cavern greets you. Where were the others?"
     thought "You cast your flashlight beam around the space, but see nothing except stone walls and stalagmites."
@@ -514,7 +576,8 @@ label ENDING4:
     # Ending Screen: Show outside cave entrance, no sprites.
     scene bg cavetitlescreen
     thought "ENDING 4  - Claire is separated from Robbie, Rey and Chance within Hellmouth caves. Spooked by the strange atmosphere of the caves, Claire leaves by herself."
-    thought "What happens to Robbie, Rey and Chance is unknown." '''
+    thought "What happens to Robbie, Rey and Chance is unknown."
+    return 
 
 
 label Lungs:
@@ -562,9 +625,15 @@ label LungsTrash:
         "Pick up the trash.":
             $trashcounter += 1
             play sound "pickupsoundv2.ogg"
-            jump GoBackExplore
+            thought "You pick it up. Yuck"
+            menu:
+                "Go back and explore.":
+                    jump GoBackExplore
         "Leave it be.":
-            jump GoBackExplore
+            thought "You leave it."
+            menu:
+                "Go back and explore.":
+                    jump GoBackExplore
 
 label PartyRoom:
     hide Rey_N_Smile
@@ -779,6 +848,7 @@ label ending1end:
     window hide
     pause
     thought "Ending 1 - Chance was lost in the depths of Hellmouth caves. Claire made it out with Rey and Robbie to go seek help."
+    return
 label Ending2:
     show Robbie_N_Speechless at l
     show Rey_N_Nervous at r
@@ -811,6 +881,7 @@ label Ending2End:
     window hide
     pause
     thought "Chance was lost in the depths of Hellmouth caves. Robbie went to go find him. Claire made it out with Rey to go seek help."
+    return
 
 label PlayAlongB:
     claire "We can't just leave him down there, let's go find him."
@@ -1215,7 +1286,7 @@ label StayWithRey:
     robbie "I need your help. I can’t get him alone. "
     claire "Ah, we can wait for a bit, until Rey feels better maybe?"
     rey "Yeah, my ankle’s doing a bit better, I could walk on it in a few minutes, maybe-"
-    hide Robbie_M_Smile
+    hide Robbie_N_Smile
     show Robbie_M_Default at l
     robbie "There’s no time! We- Claire and I should go. "
     claire "O-oh, you sure?"
@@ -1271,9 +1342,9 @@ label StayWithRey:
     hide Chance_M_Happy
     hide Rey_M_Smile
     hide Robbie_M_Smile
-    show Robbie_M_Default
-    show Rey_M_Default
-    show Chance_M_Default
+    show Robbie_M_Default at l
+    show Rey_M_Default at r
+    show Chance_M_Default at m
     claire "Sure! Uh, well if everyone is ready, let’s head back!"
     chance "Lead the way, Claire!"
     hide Robbie_M_Default
@@ -1294,6 +1365,7 @@ label Ending8:
     window hide
     pause
     thought "Claire was able to find her “friends” in the depths of Hellmouth. She leaves with “Robbie”, “Rey” and “Chance”."
+    return 
 
 label GoWithRobbie:
     scene bg cave with dissolve
@@ -1417,6 +1489,8 @@ label Ending3:
     window hide
     pause
     thought "Claire was able to find Chance, and left Hellmouth caves with him, as well as Robbie and Rey."
+    return
+
 label NotReyAlt:
     hide Robbie_N_Default
     hide Rey_N_Default
@@ -1616,6 +1690,7 @@ label Ending5End:
     window hide
     pause
     thought "Claire was able to find “Chance” within the twists and turns of Hellmouth caves. She leaves with him, in addition to Robbie and Rey."
+    return
 
 label MimicMayhem:
     scene bg blacksquare
@@ -1822,6 +1897,8 @@ label Ending10:
     thought "Claire is able to find Chance and “Chance” within the depths of the Hellmouth caves."
     thought "In trying to decipher who the real Chance is, she discovers a strange, unidentifiable creature that seems to have the ability to MIMIC people’s voices and appearance."
     thought "Claire is able to defend herself against the mimic and escape the caves with Robbie, Rey and Chance"
+    return
+
 label Ending7:
     scene nobodydied
     window hide
@@ -1829,6 +1906,8 @@ label Ending7:
     thought "Claire is able to find Chance and “Chance” within the depths of the Hellmouth caves."
     thought "In trying to decipher who the real Chance is, she discovers a strange, unidentifiable creature that seems to have the ability to MIMIC people’s voices and appearance."
     thought "Claire fails to fend off the mimic, and dies in Hellmouth caves. What happens to Chance, Rey and Robbie is unknown."
+    return
+
 label Separate:
     scene bg cavealt
     show Chance_N_Default at l
@@ -1878,7 +1957,7 @@ label SepPaths:
         if SepHeartVar == 1:
             if SepPartyRoomVar == 1:
                 thought "The unsettling feeling of this isolation begins to settle in,  and you realize it’s probably time to meet up with the others, anyway. You turn and start to make your way back to the rendezvous point."
-                jump RendezvousPoint
+                jump SepRendezvousPoint
     if SepLungsVar == 0:
         if SepHeartVar == 1:
             if SepPartyRoomVar == 0:
@@ -2040,7 +2119,7 @@ label smally:
     "You find yourself back at the crossroads from before. You look down the three branching tunnels, wondering where to go next."
     jump SepPaths
 
-label RendezvousPoint:
+label SepRendezvousPoint:
     play sound "echofootsteps.ogg"
     scene bg partyroomempty with dissolve
     thought "You finally make it back to the rendezvous point. An empty, silent cavern greets you."
@@ -2143,32 +2222,32 @@ label Corkscrew2:
             thought "Breathe. Breathe. Breathe."
             thought "You grab a hold of a mass and, in one last dug, get closer to the opening."
             thought "Your arm reaches through it, feeling the open space on the other side."
-            jump Mimic
+            jump Womb
 
 label Womb:
     scene bg fleshcavealt
     thought "You shudder, and with one last burst of strength, you lurch your body forward and tumble from the tunnel, landing in a heap on the ground."
     thought "You look up and nearly jump straight out of your skin."
     thought "Rey is standing in the center of the room, watching you quietly."
-    Claire "Rey? What-what are you doing here?"
+    claire "Rey? What-what are you doing here?"
     thought "She stares right through you, only looking up and meeting your eyes when you walk closer."
-    Claire "Rey? What are you-"
+    claire "Rey? What are you-"
     Not Rey "Oh, hello."
     thought "Her voice sounds somber, almost tired, like she had just finished crying."
-    Claire "Hi? C’mon Rey, stop acting weird, why are you down here?"
+    claire "Hi? C’mon Rey, stop acting weird, why are you down here?"
     thought "As you ask her again, she offers what seems like a forced smile and continues. "
     Not Rey "I was looking for you, and the rest of our group. Not sure how I got here…"
-    Claire "Ah, yeah me too…"
-    Claire "I wonder if Chance and Robbie are lost too, or if they’re looking for us."
+    claire "Ah, yeah me too…"
+    claire "I wonder if Chance and Robbie are lost too, or if they’re looking for us."
     thought "Rey stares at you, blankly."
-    Claire "Um… so, do you want to try to find a way out? Maybe if we-"
+    claire "Um… so, do you want to try to find a way out? Maybe if we-"
     Not Rey "Mm, follow me."
-    Claire "Oh do you know a way ou–hey! Rey?"
+    claire "Oh do you know a way ou–hey! Rey?"
     thought "She runs off, making no attempt to check on you before doing so."
-    Claire "Hey, slow down! Rey!"
+    claire "Hey, slow down! Rey!"
     thought "If she hears you, she does not respond."
     thought "The two of you go deeper into the cave, passing by a few different tunnels and narrow rooms, all of which she avoids."
-    Claire "Hey uh, are you sure this is the right way?"
+    claire "Hey uh, are you sure this is the right way?"
     Not Rey "…"
     thought "The walls feel like they’re closing in, and each step you take progressively sounds moister than the last."
     thought "You watch as Rey pushes past a curtain of some thin, flesh-looking substance, red liquid staining her hands."
