@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 506, in script
-    jump GoBackExplore
-ScriptError: could not find label 'GoBackExplore'.
+  File "game/script.rpy", line 2005, in script
+    jump SepGoBackExplore
+ScriptError: could not find label 'SepGoBackExplore'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 506, in script
-    jump GoBackExplore
-  File "C:\Users\metak\Downloads\renpy-8.1.3-sdk\renpy\ast.py", line 1992, in execute
+  File "game/script.rpy", line 2005, in script
+    jump SepGoBackExplore
+  File "C:\Users\germe\Downloads\renpy-8.1.3-sdk\renpy\ast.py", line 1992, in execute
     rv = renpy.game.script.lookup(target)
-  File "C:\Users\metak\Downloads\renpy-8.1.3-sdk\renpy\script.py", line 1013, in lookup
+  File "C:\Users\germe\Downloads\renpy-8.1.3-sdk\renpy\script.py", line 1013, in lookup
     raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'GoBackExplore'.
+ScriptError: could not find label 'SepGoBackExplore'.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.3.23091805
 CaveGame 1.0
-Fri Dec  8 11:18:34 2023
+Fri Dec  8 13:16:46 2023

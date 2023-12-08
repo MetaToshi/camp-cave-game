@@ -1927,6 +1927,10 @@ label Separate:
     claire "Mhm, if any of you hit a dead end, or need to come back, this is our spot. Let’s all meet back here once we’re done, alright?"
     chance "Sounds perfect! See you then"
     jump SepPaths
+
+label SepGoBackExplore:
+    scene bg partyroomempty
+    thought "You find yourself back at the crossroads from before."
 label SepPaths:
     scene bg partyroomempty
     thought "To the left, a faint wind sends a chill down your spine. You know some caverns have wind tunnels in them. It could be worth exploring."
@@ -2261,3 +2265,6 @@ label Womb:
     Claire "Rey, can you at least tell me where we’re going?"
     notrey "We’re heading out."
     thought "She steps close to a passage that’s lower to the ground, looks back at you, and walks into it."
+    menu:
+        "Follow Rey":
+            thought "yomama"
