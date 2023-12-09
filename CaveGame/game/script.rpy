@@ -189,6 +189,7 @@ define notrobbie = Character("Robbie?", color="#EA9807")
 define stranger = Character("Stranger")
 define chance = Character("Chance", color="#EA2F07")
 define notchance = Character("Chance?", color="#EA2F07")
+define cave = Character("Hellmouth?", color="#808080" )
 
 image Rey_N_Default = "Rey_N_Default.png"
 image Rey_N_Guilt = "Rey_N_Guilt.png"
@@ -1700,6 +1701,7 @@ label Ending5:
             thought "He smiles. Despite the jagged texture that his skin looks like, it organically moves and pinches into dimples you don’t remember Chance having."
             show Chance_M_Happy at r
             chance "Light that is not mechanical ways. Warmth of a body made of the flesh that impersonates rock. Flesh that impersonates flesh. What a beautiful day it is."
+            jump Ending5End
 label Ending5End:
     show chancedied
     window hide
@@ -2194,8 +2196,11 @@ label SepRendezvousPoint:
             jump Corkscrew
 label Ending4:
     scene bg cavetitlescreen
+    window hide
+    pause
     thought "Claire is separated from Robbie, Rey and Chance within Hellmouth caves. Spooked by the strange atmosphere of the caves, Claire leaves by herself."
     thought "What happens to Robbie, Rey and Chance is unknown."
+    return
 
 label Corkscrew:
     scene bg tightsqueeze
@@ -2448,9 +2453,183 @@ label Ending12:
     pause
     thought "Claire is reunited with Chance, Rey and Robbie within Hellmouth caves."
     thought "Upon trying to flee the caves, they discover the only known exit is unexplainably blocked. All four friends remain trapped inside the cave."
+    return
 
 label Reason:
-    thought "still finishing..."
+    chancenervousm
+    bg cave
+    thought "Wait. Wait. What if…"
+    play sound "mediumheartbeatv2.ogg" loop
+    thought "…the pulsing room, that felt rhythmic…"
+    thought "…like a heartbeat."
+    stop sound fadeout 2.0
+    play sound "deepwindv2.ogg" loop
+    thought "…the windy cavern, with those strange patterns of gusts…"
+    thought "…like someone breathing."
+    stop sound fadeout 1.5
+    play sound "bonesandflesh.ogg" fadein 0.5 volume 0.3
+    thought "…all these squishy, liquid covered walls… "
+    play sound "bonesandflesh.ogg" fadein 0.5 volume 0.3
+    thought "…like somebody's flesh."
+    thought "…these twisting tunnels, these caverns, these rooms…."
+    thought "You gasp. What if…"
+    claire "Something’s wrong with the cave itself."
+    hide Robbie_N_Question
+    show Robbie_N_Default at l
+    robbie "Yeah, we’ve noticed!"
+    claire "No, but I mean, more than that."
+    claire "I think this cave is some kind of living organism."
+    hide Rey_N_Nervous
+    show Rey_N_Speechless at r
+    rey "You mean, we’ve been walking and trampling around in some…animal?"
+    chance "Claire that’s -"
+    claire "Listen. Put your hands to this wall, look around, think about any of the places we’ve been to. Do they really seem like normal parts of a cave to you?"
+    chance "I-"
+    claire "We’re inside something. Something living, breathing, thinking."
+    hide Chance_N_Nervous
+    show Chance_N_Question at m
+    hide Robbie_N_Default
+    show Robbie_N_Question at l
+    thought "Everyone pauses for a moment, and thinks about what you’ve just proposed."
+    hide Chance_N_Question
+    show Chance_N_Nervous at m
+    rey "Oh god. Oh god you’re right."
+    hide Chance_N_Nervous
+    show Chance_N_Guilt at m
+    chance "…she is. Yeah. "
+    rey "I think I might throw up. What the hell."
+    robbie "Well, if this thing is living, then maybe it can hear us!"
+    hide Robbie_N_Nervous
+    show Robbie_N_Default
+    robbie "LET US OUT OF HERE YOU FUCK! DO YOU FUCKING HEAR ME???"
+    hide Rey_N_Speechless
+    show Rey_N_Guilt at r
+    rey "Don’t yell at it!"
+    robbie "What, should I ask nicely to not eat us? Pretty please, cave entity, be nice to us!"
+    claire "Wait, no. Rey has a point."
+    hide Chance_N_Guilt 
+    show Chance_N_Question at m
+    hide Rey_N_Guilt
+    show Rey_N_Default at r
+    chance "Oh come on that’s dumb. Really?"
+    claire "What if we try to negotiate with it? We’re already inside it, maybe it doesn’t want us here just as much as we don’t want to be here! "
+    hide Robbie_N_Default
+    show Robbie_N_Question at l
+    hide Rey_N_Default
+    show Rey_N_Question at r
+    robbie "I- I mean fuck it. Why not?"
+    rey "If the way back is blocked, maybe this is our best way out?"
+    chance "How…should we go about it? "
+    thought "All eyes turn towards you, and you realize that, once again, you must take the lead."
+    thought "You breathe in, trying to rationalize to yourself that, yes, you are about to speak to some sentient meat cave. This is insane, but, your best chance."
+    thought "You breathe out, and put your palms square on the floor of the cave, on a piece of flesh that feels particularly warm. "
+    claire "Hellmouth Cave, if that’s your name, I hope you can hear me."
+    hide Chance_N_Question
+    show Chance_N_Nervous at m
+    chance "Oh my god she’s going for it."
+    hide Rey_N_Question
+    show Rey_N_Guilt at r
+    rey "Shut up. "
+    claire "I know that we didn’t come here with the best of intentions. We trespassed into your home- your body, and for that we apologize."
+    thought "The cave remains still. If it can hear you, it isn’t responding in any way. "
+    thought "Try to think of what else you can say."
+    if trashcounter > 4:
+        jump EndingSuccess
+    if trashcounter < 5:
+        jump EndingFailure
+label EndingSuccess:
+    claire "I know people like us come here a lot and leave their trash all over you, and I apologize on behalf of those people. "
+    claire "I tried to clean up what they left behind, but I understand that it’s a very small start."
+    claire "I hope that one day you can be just as clean as you were before any of those people came here."
+    claire "It must not be nice…to be walked all over and have people ruining you. I’m sorry."
+    thought "You feel a hum from the spot on the floor beneath your hand."
+    claire "Is there any way that we can leave? We don’t want to cause you any more harm, we just want to make it out of you alive."
+    thought "The humming pauses, almost as though it were thinking."
+    claire "We can try to make sure that more people don’t come here, and the ones that do treat you better."
+    thought "Still no response."
+    claire "No, I won’t try, I’ll promise. No one like us will {i}ever{/i} come here {i}again{/i}."
+    thought "Your words echo around the cave, and your friends hold their breath. No one says anything for a moment"
+    thought "Suddenly, a voice, faint but soft, echoes throughout the room. It sounds otherworldly, and beautiful. "
+    hide Rey_N_Guilt
+    hide Chance_N_Nervous
+    hide Robbie_N_Question
+    show Robbie_N_Awkward at l
+    show Rey_N_Question at r
+    show Chance_N_Scared at m
+    cave "This way…"
+    hide Chance_N_Scared
+    show Chance_N_Nervous at m
+    chance "Oh my god?"
+    robbie "THAT WORKED?!"
+    rey "Should…we follow it? What if it’s a trick?"
+    claire "I think it’s our best shot, really. "
+    scene bg tightsqueeze with fade
+    scene bg partyroomempty with fade
+    scene bg cavealt with fade
+    scene bg cave with fade
+    thought "You and your friends follow the voice, as it gently leads and guides you through a narrow passage that only opens up more, eventually letting all of you walk upright, side by side."
+    thought "You keep your hand on the side of the cave as you walk, speaking to the cave, or the entity of the cave, or whatever this thing is."
+    thought "It leads your group out with faint whispers, and you respond with gratitude and kindness."
+    cave "Here… your exit."
+    thought "As it speaks, the walls split and crack open, and the first rays of sunlight you’ve seen in ours break through the darkness."
+    show Rey_N_Smile at r
+    show Chance_N_Happy at m
+    show Robbie_N_Cheeky at l
+    rey "Oh my god, we’re out! "
+    chance "We made it! "
+    robbie "We’re out of this Hellhole!!!"
+    play sound "rocksfallingv2.ogg"
+    thought "You feel the cave rumble in response to Robbie’s comment, and you quickly add."
+    claire "He didn’t mean that, I’m sorry. "
+    cave "Hmph. Free…to go."
+    play sound "footstepsnormal.ogg"
+    hide Rey_N_Smile
+    thought "You watch as your friends run out of the cave, happy to be back in natural light and fresh air. Rey runs to the nearest tree and hugs it as tight as she can."
+    hide Chance_N_Happy
+    hide Robbie_N_Cheeky
+    thought "Chance starts laughing, at seemingly nothing in particular. Robbie starts kissing the ground and weeping."
+    thought "While you’re still in the mouth of the cave, you press first your hand, and then your forehead to the cave wall. "
+    claire "Thank you, Hellmouth. I truly am sorry humans haven’t been kinder to you. You could’ve kept me and my friends trapped down there, but I’m very glad that you let us go."
+    thought "The cave rumbles in what feels like a laugh. "
+    cave "Welcome…"
+    claire "We’ll be going now, but…I want to come back, and get rid of the trash from other people. You deserve to have a clean home. "
+    cave "Thank you. Kind human."
+    jump Ending9
+
+label Ending9:
+    scene bg cavetitlescreen
+    show Rey_N_Smile at r
+    show Chance_N_Happy at m
+    show Robbie_N_Cheeky at l
+    window hide
+    pause
+    thought "Claire is able to reunite with her friends within Hellmouth cave."
+    thought "Realizing that all is not as it seems, she is able to advocate on behalf of her friends and herself for their survival and freedom."
+    thought "This attempt is successful, and all four characters are able to safely leave the cave."
+    thought "*Achievement: Captain Planet*"
+    return 
+    
+label EndingFailure:
+    claire "People really- suck sometimes. Like, we saw all the graffiti up near the top, and that couldn’t have been nice."
+    thought "If the cave hears you, it doesn’t respond."
+    hide Rey_N_Guilt
+    show Rey_N_Question at r
+    claire "Uh…and, I’m sorry for coming in here. It can’t be good to have people punching you or stomping on you and stuff."
+    thought "You’re trying to think of what else to say, but nothing’s coming to mind. "
+    claire "Can you please help up and let us out?"
+    thought "Nothing. "
+    thought "Defeated, you get up, and try to think of what else to do. "
+    claire "I don’t think it liked my apology."
+    hide Chance_N_Nervous
+    hide Robbie_N_Question
+    hide Rey_N_Question
+    show Chance_N_Default
+    show Rey_N_Guilt
+    show Robbie_N_Speechless
+    chance "Uh huh. So, what if we just ran?"
+    rey "Yeah let’s do that."
+    jump Flee
+
 
 label Stomach:
     scene bg fleshcavealt1
