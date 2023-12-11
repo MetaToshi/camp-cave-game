@@ -11,7 +11,7 @@
 ## title, and shows up in the interface and error reports.
 ##
 ## The _() surrounding the string marks it as eligible for translation.
-
+define build.itch_project = "Metatoshi/Hellmouth"
 define config.name = _("CaveGame")
 
 

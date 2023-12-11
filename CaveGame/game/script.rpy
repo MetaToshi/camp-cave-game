@@ -1328,7 +1328,7 @@ label StayWithRey:
     claire "Ah, we can wait for a bit, until Rey feels better maybe?"
     rey "Yeah, my ankle’s doing a bit better, I could walk on it in a few minutes, maybe-"
     hide Robbie_M_Smile
-    show Robbie_M_Default at l
+    show Robbie_M_Default at r
     robbie "There’s no time! We- Claire and I should go. "
     claire "O-oh, you sure?"
     robbie "He’s…stuck! Down there, and he wants you to come to him!"
